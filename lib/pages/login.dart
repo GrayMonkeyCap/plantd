@@ -1,6 +1,15 @@
+import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,7 +180,16 @@ class login extends StatelessWidget {
                     textAlign: TextAlign.left,
                   )
                 ],
-              )
+              ),
+              FloatingActionButton(onPressed: () async{
+                dynamic result = await _auth.signInAnon();
+                if(result==null){
+                  print("Error");
+                }else{
+                  print("YOOOOOOOO");
+                  print(result);
+                }
+              })
             ],
           )),
     );
