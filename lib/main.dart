@@ -5,6 +5,7 @@ import 'package:firstapp/pages/previous_reports.dart';
 import 'package:firstapp/pages/title.dart';
 import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/pages/report.dart';
+import 'package:firstapp/pages/signup.dart';
 
 void main() => runApp(App());
 
@@ -29,6 +30,7 @@ class App extends StatelessWidget {
               '/login': (context) => login(),
               '/report': (context) => report(),
               '/previous_reports': (context) => previous_report(),
+              '/signup': (context) => signup(),
             });
         }
         return title();

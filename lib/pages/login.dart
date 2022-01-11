@@ -1,5 +1,6 @@
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 class login extends StatefulWidget {
   @override
@@ -158,27 +159,39 @@ class _loginState extends State<login> {
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05),
-                    child: Text(
-                      "SIGNUP ",
-                      style: TextStyle(
-                          color: Colors.teal[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0,
-                          letterSpacing: 1.25),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  const Text(
-                    "HERE",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14.0,
-                        letterSpacing: 1.25),
-                    textAlign: TextAlign.left,
-                  )
+                      margin: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.05),
+                      child: GestureDetector(
+                        child: RichText(
+                          text: TextSpan(
+                            text: '',
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'SIGNUP',
+                                style: TextStyle(
+                                    color: Colors.teal[900],
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 14.0,
+                                    letterSpacing: 1.25),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/signup');
+                                  },
+                              ),
+                              TextSpan(
+                                text: '  HERE',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.0,
+                                    letterSpacing: 1.25),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ))
                 ],
               ),
               FloatingActionButton(onPressed: () async{

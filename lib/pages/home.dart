@@ -37,7 +37,7 @@ class _State extends State<home> {
                     Navigator.pushReplacementNamed(
                         context, '/previous_reports');
                   } else {
-                    Navigator.pushReplacementNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/signup');
                   }
                 },
                 itemBuilder: (context) => [
