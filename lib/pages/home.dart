@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:firstapp/pages/login.dart';
+import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class home extends StatefulWidget {
@@ -8,6 +10,7 @@ class home extends StatefulWidget {
 }
 
 class _State extends State<home> {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,14 +35,19 @@ class _State extends State<home> {
           actions: [
             PopupMenuButton(
                 icon: Icon(Icons.menu),
-                onSelected: (value) {
+                onSelected: (value) async {
                   if (value == '/previous_reports') {
                     Navigator.pushReplacementNamed(
                         context, '/previous_reports');
                   } else {
-                    Navigator.pushReplacementNamed(context, '/signup');
-                  }
+                    //Navigator.pushReplacementNamed(context, '/signup');
+                      await _auth.signOut()
+                      .then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
+                      
+                      }
                 },
+                  
+                
                 itemBuilder: (context) => [
                       PopupMenuItem(
                           child: Text("Previous Report"),
