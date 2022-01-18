@@ -28,12 +28,15 @@ class App extends StatelessWidget {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return StreamProvider<MyUser?>.value(
+            catchError: (context,e) {
+              print(e.toString());
+              },
             initialData: null,
             value: AuthService().user,
             child: Wrapper()
           );
         }
-        return title();
+        return MaterialApp(home: title());
        
 
         // // Otherwise, show something whilst waiting for initialization to complete

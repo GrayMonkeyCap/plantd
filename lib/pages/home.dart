@@ -4,12 +4,7 @@ import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class home extends StatefulWidget {
-  @override
-  _State createState() => _State();
-}
-
-class _State extends State<home> {
+class home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
@@ -41,8 +36,8 @@ class _State extends State<home> {
                         context, '/previous_reports');
                   } else {
                     //Navigator.pushReplacementNamed(context, '/signup');
-                      await _auth.signOut()
-                      .then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
+                      await _auth.signOut();
+                      //.then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
                       
                       }
                 },

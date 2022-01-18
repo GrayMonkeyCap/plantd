@@ -7,7 +7,7 @@ class AuthService{
 
   // create user obj based on firebase
   MyUser? _userFromFirebaseUser(User? user) {
-  return  MyUser(uid: user!.uid );
+  return  MyUser(uid: user?.uid );
      //return user != null ? MyUser(uid: user.uid) : null;
 
   }
@@ -15,7 +15,7 @@ class AuthService{
   //auth change user stream
 Stream<MyUser?> get user {
   return _auth.authStateChanges()
-  .map((User? user) => _userFromFirebaseUser(user!)); 
+  .map((User? user) => _userFromFirebaseUser(user)); 
   // .map(_userFromFirebaseUser);
   }
 
@@ -33,9 +33,9 @@ Stream<MyUser?> get user {
   }
 
   //sign out
-  Future signOut() async{
+  Future<void> signOut() async{
     try{
-      return await _auth.signOut();
+     await _auth.signOut();
     } catch(e){
       print(e.toString());
       return null;

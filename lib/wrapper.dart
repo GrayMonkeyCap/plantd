@@ -17,9 +17,9 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
    
    final user = Provider.of<MyUser?>(context);
-   print(user);
+   print("USER YAHA HAI ${user?.uid}");
 
-        if(user == null) {
+        if(user?.uid == null) {
           return MaterialApp(
             home: login(),
           );

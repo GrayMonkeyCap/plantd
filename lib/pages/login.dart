@@ -2,13 +2,7 @@ import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
-class login extends StatefulWidget {
-  @override
-  State<login> createState() => _loginState();
-}
-
-class _loginState extends State<login> {
-
+class login extends StatelessWidget{
   final AuthService _auth = AuthService();
 
   @override
