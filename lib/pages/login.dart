@@ -2,14 +2,22 @@ import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
-class login extends StatelessWidget{
-  final AuthService _auth = AuthService();
+class login extends StatefulWidget {
+  @override
+  State<login> createState() => _loginState();
+}
 
+class _loginState extends State<login> {
+  final AuthService _auth = AuthService();
+  final _formkey = GlobalKey<FormState>();
+  String email = '';
+  String password = '';
+  String error = '';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-    
+        resizeToAvoidBottomInset: false,
         body: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
@@ -42,97 +50,121 @@ class login extends StatelessWidget{
                   child: const Text(
                     "PLEASE LOGIN TO CONTINUE",
                     style: TextStyle(
-                        color: Colors.white, letterSpacing: 1.25, fontSize: 14.0),
+                        color: Colors.white,
+                        letterSpacing: 1.25,
+                        fontSize: 14.0),
                   ),
                 ),
                 Container(
                   // height: MediaQuery.of(context).size.height * 0.4,
                   width: MediaQuery.of(context).size.width * 0.9,
                   margin: const EdgeInsets.only(bottom: 30.0),
-    
+
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: TextButton.icon(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/googlelogo.png',
-                            height: 20.0,
-                            width: 20.0,
-                          ),
-                          label: Text(
-                            "Sign in with Google ",
-                            style: TextStyle(color: Colors.grey),
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                          child: TextButton.icon(
+                            onPressed: () {},
+                            icon: Image.asset(
+                              'assets/googlelogo.png',
+                              height: 20.0,
+                              width: 20.0,
+                            ),
+                            label: Text(
+                              "Sign in with Google ",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 20.0),
-                        child: const Text("OR"),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 30.0),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 20.0),
+                          child: const Text("OR"),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 30.0),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: TextFormField(
+                            onChanged: (val) {
+                              setState(() => email = val);
+                            },
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.teal),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.teal),
+                              ),
+                              labelText: 'Email/PhoneNo.',
+                              labelStyle: TextStyle(color: Colors.teal),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.teal),
-                            ),
-                            labelText: 'Email/PhoneNo.',
-                            labelStyle: TextStyle(color: Colors.teal),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: TextFormField(
+                            onChanged: (val) {
+                              setState(() => password = val);
+                            },
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.teal),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.teal),
+                              ),
+                              suffixIcon: Icon(Icons.visibility),
+                              labelText: 'Password',
+                              labelStyle: TextStyle(color: Colors.teal),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.teal),
-                            ),
-                            suffixIcon: Icon(Icons.visibility),
-                            labelText: 'Password',
-                            labelStyle: TextStyle(color: Colors.teal),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 30.0, bottom: 30.0),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/home');
-                          },
-                          child: const Text(
-                            'LOG IN',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12.0,
-                                letterSpacing: 1.25),
+                        Container(
+                          margin:
+                              const EdgeInsets.only(top: 30.0, bottom: 30.0),
+                          child: TextButton(
+                            onPressed: () async {
+                              if (_formkey.currentState!.validate()) {
+                                dynamic result =
+                                    await _auth.signin(email, password);
+                                if (result == null) {
+                                  setState(() => error =
+                                      'COULD NOT SIGN IN WITH THOSE CREDENTIALS');
+                                }
+                              }
+                            },
+                            child: const Text(
+                              'LOG IN',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12.0,
+                                  letterSpacing: 1.25),
+                            ),
+                            style: ButtonStyle(
+                                backgroundColor: (MaterialStateProperty.all(
+                                    Colors.teal[900])),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ))),
                           ),
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  (MaterialStateProperty.all(Colors.teal[900])),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ))),
                         ),
-                      ),
-                    ],
+                        Text(error,
+                            style: TextStyle(color: Colors.red, fontSize: 14)),
+                        SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
                 Row(
@@ -190,11 +222,11 @@ class login extends StatelessWidget{
                         ))
                   ],
                 ),
-                FloatingActionButton(onPressed: () async{
+                FloatingActionButton(onPressed: () async {
                   dynamic result = await _auth.signInAnon();
-                  if(result==null){
+                  if (result == null) {
                     print("Error");
-                  }else{
+                  } else {
                     // print("YOOOOOOOO");
                     print(result.uid);
                   }
