@@ -168,7 +168,7 @@ class _signupState extends State<signup> {
                         Container(
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: TextFormField(
-                            validator: (val) => (val == password)
+                            validator: (val) => (val != password)
                                 ? 'Passwords do not match'
                                 : null,
                             onChanged: (val) {
@@ -199,8 +199,9 @@ class _signupState extends State<signup> {
                                     await _auth.register(email, password);
                                 if (result == null) {
                                   setState(() =>
-                                      error = 'please supply a valid email');
+                                      error = 'Please enter a valid Email Id');
                                 }
+                                Navigator.pushReplacementNamed(context, '/');
                               }
                             },
                             child: const Text(

@@ -18,22 +18,25 @@ class Wrapper extends StatelessWidget {
     print("USER YAHA HAI ${user?.uid}");
 
     if (user?.uid == null) {
-      return MaterialApp(
-        home: login(),
-      );
+      return MaterialApp(routes: {
+        '/signup': (context) => signup(),
+      }, home: login());
     } else {
-      return MaterialApp(
-        home: home(),
-      );
+      return MaterialApp(routes: {
+        '/report': (context) => report(),
+        '/previous_reports': (context) => previous_report(),
+      }, home: home());
     }
-    //     return MaterialApp(initialRoute: '/', routes: {
-    //         // ignore: prefer_const_constructors
-    //         '/': (context) => title(),
-    //         '/home': (context) => home(),
-    //         '/login': (context) => login(),
-    //         '/report': (context) => report(),
-    //         '/previous_reports': (context) => previous_report(),
-    //         '/signup': (context) => signup(),
-    //       });
   }
 }
+
+
+// routes: {
+//         //ignore: prefer_const_constructors
+//         //'/': (context) => title(),
+//         '/home': (context) => home(),
+//         '/login': (context) => login(),
+//         '/report': (context) => report(),
+//         '/previous_reports': (context) => previous_report(),
+//         '/signup': (context) => signup(),
+//       },
