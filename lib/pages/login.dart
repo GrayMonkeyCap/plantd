@@ -72,7 +72,9 @@ class _loginState extends State<login> {
                         Container(
                           margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
                           child: TextButton.icon(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await _auth.googleSignUp();
+                            },
                             icon: Image.asset(
                               'assets/googlelogo.png',
                               height: 20.0,
