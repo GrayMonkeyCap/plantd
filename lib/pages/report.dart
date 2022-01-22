@@ -44,28 +44,22 @@ class report extends StatelessWidget {
 
       //    ),
 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            color: Colors.teal[800],
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: const Image(image: AssetImage('assets/image2.jpg')),
-          ),
-          Stack(
-            children: [
+      body: Stack(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
               Container(
-
-                  //  height: MediaQuery.of(context).size.height*0.4,
-                  //  margin: EdgeInsets.only(bottom: .0),
-                  // child: Image(image: AssetImage('assets/imgage2.jpg'))
-                  ),
+                color: Colors.teal[800],
+                height: MediaQuery.of(context).size.height * 0.4
+              ),
               Container(
                 padding: const EdgeInsets.only(left: 40.0, right: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[
+                    SizedBox(height: 80.0,),
                     Text(
                       'Diseases:',
                       // textAlign: TextAlign.left,
@@ -95,6 +89,27 @@ class report extends StatelessWidget {
               ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  SizedBox(height: 100.0,),
+                  Container(
+                    height: 250.0,
+                    width: 250.0,
+                    decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage("assets/image1.jpg"),
+                                      fit: BoxFit.cover),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  )
+                ],
+              ),
+            ],
+          ),
+
         ],
       ),
     );
