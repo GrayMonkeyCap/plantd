@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 
 class report extends StatelessWidget {
+  final String imagePath;
+  report({required this.imagePath});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +102,7 @@ class report extends StatelessWidget {
                     width: 250.0,
                     decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: AssetImage("assets/image1.jpg"),
+                                      image: AssetImage(imagePath),
                                       fit: BoxFit.cover),
                                   color: Colors.white,
                                   borderRadius: BorderRadius.all(Radius.circular(10))),

@@ -1,3 +1,4 @@
+import 'package:firstapp/pages/report.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -53,13 +54,47 @@ class TakePictureScreenState extends State<TakePictureScreen> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   // If the Future is complete, display the preview.
-                  return CameraPreview(_controller);
+                  return Column(
+                    children: [
+                      CameraPreview(_controller),
+                      FloatingActionButton(
+                      // Provide an onPressed callback.
+                      onPressed: () async {
+                        // Take the Picture in a try / catch block. If anything goes wrong,
+                        // catch the error.
+                        try {
+                          // Ensure that the camera is initialized.
+                          await _initializeControllerFuture;
+
+                          // Attempt to take a picture and then get the location
+                          // where the image file is saved.
+                          final image = await _controller.takePicture();
+                          await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => report(
+                              // Pass the automatically generated path to
+                              // the DisplayPictureScreen widget.
+                              imagePath: image.path,
+                            ),
+                          ),
+                        );
+                        } catch (e) {
+                          // If an error occurs, log the error to the console.
+                          print(e);
+                        }
+                      },
+                      child: const Icon(Icons.camera_alt),
+                    )
+                    ],
+                  );
                 } else {
                   // Otherwise, display a loading indicator.
                   return const Center(child: CircularProgressIndicator());
                 }
               },
+              
             ),
+          
     );
   }
 }

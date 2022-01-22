@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:firstapp/models/user.dart';
 import 'package:camera/camera.dart';
 
-void main() async{
+Future<void> main() async{
   // Ensure that plugin services are initialized so that `availableCameras()`
   // can be called before `runApp()`
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +38,7 @@ class App extends StatelessWidget {
             //'/': (context) => title(),
             '/home': (context) => home(),
             '/login': (context) => login(),
-            '/report': (context) => report(),
+            //'/report': (context) => report(),
             '/previous_reports': (context) => previous_report(),
             '/signup': (context) => signup(),
             '/scan': (context) => TakePictureScreen(camera: camera,),
