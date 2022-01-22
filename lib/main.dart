@@ -16,7 +16,17 @@ void main() => runApp(App());
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return (FutureBuilder(
+    return MaterialApp(
+      routes: {
+            // ignore: prefer_const_constructors
+            //'/': (context) => title(),
+            '/home': (context) => home(),
+            '/login': (context) => login(),
+            '/report': (context) => report(),
+            '/previous_reports': (context) => previous_report(),
+            '/signup': (context) => signup(),
+          },
+      home:FutureBuilder(
       // Initialize FlutterFire
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {

@@ -54,83 +54,92 @@ class home extends StatelessWidget {
                     ]),
           ],
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: Stack(
           children: [
-            Container(
-                margin: const EdgeInsets.only(top: 80),
-                child: Text(
-                  "Scan the leaf's image",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                    letterSpacing: 2.0,
-                  ),
-                )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  height: 100.0,
-                  width: 90.0,
-                  margin: EdgeInsets.only(top: 90),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 4, color: Colors.white),
-                      image: DecorationImage(
-                          image: AssetImage("assets/image1.jpg"),
-                          fit: BoxFit.cover),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                ),
+                    margin: const EdgeInsets.only(top: 80),
+                    child: Text(
+                      "Scan the leaf's image",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32.0,
+                        letterSpacing: 2.0,
+                      ),
+                    )),
                 Container(
-                  height: 100.0,
-                  width: 90.0,
-                  margin: EdgeInsets.only(top: 70, left: 10),
+                  height: MediaQuery.of(context).size.height * 0.55 - 75,
+                  width: MediaQuery.of(context).size.width * 1,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 4, color: Colors.white),
-                      image: DecorationImage(
-                          image: AssetImage("assets/image2.jpg"),
-                          fit: BoxFit.cover),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                ),
-                Container(
-                  height: 100.0,
-                  width: 90.0,
-                  margin: EdgeInsets.only(top: 90, left: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 4, color: Colors.white),
-                      image: DecorationImage(
-                          image: AssetImage("assets/image3.jpg"),
-                          fit: BoxFit.cover),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: Colors.teal,
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(40.0),
+                          topLeft: Radius.circular(40.0))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                          child: Icon(Icons.qr_code_scanner,
+                              size: 170, color: Colors.blueGrey[900])),
+                      FlatButton(
+                        onPressed: () =>
+                            {Navigator.pushReplacementNamed(context, '/report')},
+                        child: Text('Scan'),
+                        textColor: Colors.white,
+                        color: Colors.blueGrey[900],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.55 - 75,
-              width: MediaQuery.of(context).size.width * 1,
-              decoration: BoxDecoration(
-                  color: Colors.teal,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40.0),
-                      topLeft: Radius.circular(40.0))),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                      child: Icon(Icons.qr_code_scanner,
-                          size: 170, color: Colors.blueGrey[900])),
-                  FlatButton(
-                    onPressed: () =>
-                        {Navigator.pushReplacementNamed(context, '/report')},
-                    child: Text('Scan'),
-                    textColor: Colors.white,
-                    color: Colors.blueGrey[900],
-                  )
-                ],
-              ),
+            Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height * 0.55 *0.35,),
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 100.0,
+                          width: 90.0,
+                          margin: EdgeInsets.only(top: 90),
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 4, color: Colors.white),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/image1.jpg"),
+                                  fit: BoxFit.cover),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                        ),
+                        Container(
+                          height: 100.0,
+                          width: 90.0,
+                          margin: EdgeInsets.only(top: 70, left: 10),
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 4, color: Colors.white),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/image2.jpg"),
+                                  fit: BoxFit.cover),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                        ),
+                        Container(
+                          height: 100.0,
+                          width: 90.0,
+                          margin: EdgeInsets.only(top: 90, left: 10),
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 4, color: Colors.white),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/image3.jpg"),
+                                  fit: BoxFit.cover),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                        ),
+                      ],
+                    ),
+              ],
             ),
           ],
         ),
