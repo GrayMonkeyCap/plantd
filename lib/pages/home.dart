@@ -85,7 +85,7 @@ class home extends StatelessWidget {
                               size: 170, color: Colors.blueGrey[900])),
                       FlatButton(
                         onPressed: () =>
-                            {Navigator.pushReplacementNamed(context, '/report')},
+                            {Navigator.pushReplacementNamed(context, '/scan')},
                         child: Text('Scan'),
                         textColor: Colors.white,
                         color: Colors.blueGrey[900],

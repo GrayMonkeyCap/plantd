@@ -8,12 +8,28 @@ import 'package:firstapp/pages/title.dart';
 import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/pages/signup.dart';
+import 'package:firstapp/pages/TakePictureScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:firstapp/models/user.dart';
+import 'package:camera/camera.dart';
 
-void main() => runApp(App());
+void main() async{
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+
+  runApp(App(camera:firstCamera));
+}
 
 class App extends StatelessWidget {
+  final camera;
+  const App({this.camera});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,6 +41,7 @@ class App extends StatelessWidget {
             '/report': (context) => report(),
             '/previous_reports': (context) => previous_report(),
             '/signup': (context) => signup(),
+            '/scan': (context) => TakePictureScreen(camera: camera,),
           },
       home:FutureBuilder(
       // Initialize FlutterFire
