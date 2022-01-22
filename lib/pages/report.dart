@@ -1,5 +1,5 @@
 // import 'dart:html';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class report extends StatelessWidget {
@@ -102,7 +102,7 @@ class report extends StatelessWidget {
                     width: 250.0,
                     decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: AssetImage(imagePath),
+                                      image:FileImage(File(imagePath)),
                                       fit: BoxFit.cover),
                                   color: Colors.white,
                                   borderRadius: BorderRadius.all(Radius.circular(10))),
