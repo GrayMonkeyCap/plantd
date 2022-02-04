@@ -2,6 +2,7 @@
 
 import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/services/auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class home extends StatelessWidget {
@@ -16,13 +17,19 @@ class home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text(
-            'plantd',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 28.0,
-              fontFamily: 'Salsa',
-              letterSpacing: 2.0,
+          title: RichText(
+            text: TextSpan(
+              text: 'plantd',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28.0,
+                fontFamily: 'Salsa',
+                letterSpacing: 2.0,
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.pushReplacementNamed(context, '/home');
+                },
             ),
           ),
           backgroundColor: Colors.teal,
@@ -36,13 +43,11 @@ class home extends StatelessWidget {
                         context, '/previous_reports');
                   } else {
                     //Navigator.pushReplacementNamed(context, '/signup');
-                      await _auth.signOut();
-                      //.then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
-                      
-                      }
+                    await _auth.signOut();
+                    //.then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
+
+                  }
                 },
-                  
-                
                 itemBuilder: (context) => [
                       PopupMenuItem(
                           child: Text("Previous Report"),
@@ -97,48 +102,50 @@ class home extends StatelessWidget {
             ),
             Column(
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.55 *0.35,),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.55 * 0.35,
+                ),
                 Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 100.0,
-                          width: 90.0,
-                          margin: EdgeInsets.only(top: 90),
-                          decoration: BoxDecoration(
-                              border: Border.all(width: 4, color: Colors.white),
-                              image: DecorationImage(
-                                  image: AssetImage("assets/image1.jpg"),
-                                  fit: BoxFit.cover),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10))),
-                        ),
-                        Container(
-                          height: 100.0,
-                          width: 90.0,
-                          margin: EdgeInsets.only(top: 70, left: 10),
-                          decoration: BoxDecoration(
-                              border: Border.all(width: 4, color: Colors.white),
-                              image: DecorationImage(
-                                  image: AssetImage("assets/image2.jpg"),
-                                  fit: BoxFit.cover),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10))),
-                        ),
-                        Container(
-                          height: 100.0,
-                          width: 90.0,
-                          margin: EdgeInsets.only(top: 90, left: 10),
-                          decoration: BoxDecoration(
-                              border: Border.all(width: 4, color: Colors.white),
-                              image: DecorationImage(
-                                  image: AssetImage("assets/image3.jpg"),
-                                  fit: BoxFit.cover),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10))),
-                        ),
-                      ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 100.0,
+                      width: 90.0,
+                      margin: EdgeInsets.only(top: 90),
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 4, color: Colors.white),
+                          image: DecorationImage(
+                              image: AssetImage("assets/image1.jpg"),
+                              fit: BoxFit.cover),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
+                    Container(
+                      height: 100.0,
+                      width: 90.0,
+                      margin: EdgeInsets.only(top: 70, left: 10),
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 4, color: Colors.white),
+                          image: DecorationImage(
+                              image: AssetImage("assets/image2.jpg"),
+                              fit: BoxFit.cover),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    Container(
+                      height: 100.0,
+                      width: 90.0,
+                      margin: EdgeInsets.only(top: 90, left: 10),
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 4, color: Colors.white),
+                          image: DecorationImage(
+                              image: AssetImage("assets/image3.jpg"),
+                              fit: BoxFit.cover),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

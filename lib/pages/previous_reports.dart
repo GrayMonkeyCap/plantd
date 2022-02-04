@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class previous_report extends StatelessWidget {
@@ -5,9 +6,20 @@ class previous_report extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "plantd",
-            style: TextStyle(fontFamily: 'Salsa'),
+          title: RichText(
+            text: TextSpan(
+              text: 'plantd',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28.0,
+                fontFamily: 'Salsa',
+                letterSpacing: 2.0,
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.pushReplacementNamed(context, '/');
+                },
+            ),
           ),
           backgroundColor: Colors.teal[500],
           actions: [
@@ -33,98 +45,101 @@ class previous_report extends StatelessWidget {
           ],
         ),
         body: Container(
+            height: MediaQuery.of(context).size.height * 1,
             color: Colors.blueGrey[600],
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                  child: Text(
-                    'Previous Reports',
-                    style: TextStyle(
-                      fontFamily: 'salsa',
-                      fontSize: 25.0,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    child: Text(
+                      'Previous Reports',
+                      style: TextStyle(
+                        fontFamily: 'salsa',
+                        fontSize: 25.0,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(15.0),
-                  padding: EdgeInsets.all(17.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        offset: const Offset(
-                          0,
-                          3,
-                        ),
-                        blurRadius: 5.0,
-                        spreadRadius: 0.2,
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'DISEASE NAME',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                  Container(
+                    margin: EdgeInsets.all(15.0),
+                    padding: EdgeInsets.all(17.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: const Offset(
+                            0,
+                            3,
                           ),
-                          Text(
-                            '99/99/9999',
-                            style: TextStyle(fontWeight: FontWeight.w300),
-                          )
-                        ],
-                      ),
-                      Icon(Icons.info_outline_rounded)
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(15.0),
-                  padding: EdgeInsets.all(17.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        offset: const Offset(
-                          0,
-                          3,
+                          blurRadius: 5.0,
+                          spreadRadius: 0.2,
                         ),
-                        blurRadius: 5.0,
-                        spreadRadius: 0.2,
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'DISEASE NAME',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              'DISEASE NAME',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '99/99/9999',
-                            style: TextStyle(fontWeight: FontWeight.w300),
-                          )
-                        ],
-                      ),
-                      Icon(Icons.info_outline_rounded)
-                    ],
+                            Text(
+                              '99/99/9999',
+                              style: TextStyle(fontWeight: FontWeight.w300),
+                            )
+                          ],
+                        ),
+                        Icon(Icons.info_outline_rounded)
+                      ],
+                    ),
                   ),
-                )
-              ],
+                  Container(
+                    margin: EdgeInsets.all(15.0),
+                    padding: EdgeInsets.all(17.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: const Offset(
+                            0,
+                            3,
+                          ),
+                          blurRadius: 5.0,
+                          spreadRadius: 0.2,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              'DISEASE NAME',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '99/99/9999',
+                              style: TextStyle(fontWeight: FontWeight.w300),
+                            )
+                          ],
+                        ),
+                        Icon(Icons.info_outline_rounded)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             )));
   }
 }

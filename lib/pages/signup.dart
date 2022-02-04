@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapp/services/auth.dart';
 
@@ -22,9 +23,10 @@ class _signupState extends State<signup> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: Colors.teal[300],
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.teal[300],
+          child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 Container(
@@ -228,8 +230,65 @@ class _signupState extends State<signup> {
                     ),
                   ),
                 ),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.05),
+                      child: const Text(
+                        "ALREADY HAVE AN ACCOUNT ?",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            letterSpacing: 1.25),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.05),
+                        child: GestureDetector(
+                          child: RichText(
+                            text: TextSpan(
+                              text: '',
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'LOGIN',
+                                  style: TextStyle(
+                                      color: Colors.teal[900],
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                      fontSize: 14.0,
+                                      letterSpacing: 1.25),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/login');
+                                    },
+                                ),
+                                const TextSpan(
+                                  text: '  HERE',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      letterSpacing: 1.25),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ))
+                  ],
+                ),
               ],
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }

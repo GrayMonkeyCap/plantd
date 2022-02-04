@@ -1,5 +1,6 @@
 // import 'dart:html';
 import 'dart:io';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class report extends StatelessWidget {
@@ -10,11 +11,19 @@ class report extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[500],
-        title: const Text(
-          'plantd',
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: 'Salsa',
+        title: RichText(
+          text: TextSpan(
+            text: 'plantd',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28.0,
+              fontFamily: 'Salsa',
+              letterSpacing: 2.0,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.pushReplacementNamed(context, '/home');
+              },
           ),
         ),
         actions: [
@@ -52,16 +61,17 @@ class report extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                color: Colors.teal[800],
-                height: MediaQuery.of(context).size.height * 0.4
-              ),
+                  color: Colors.teal[800],
+                  height: MediaQuery.of(context).size.height * 0.4),
               Container(
                 padding: const EdgeInsets.only(left: 40.0, right: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[
-                    SizedBox(height: 80.0,),
+                    SizedBox(
+                      height: 80.0,
+                    ),
                     Text(
                       'Diseases:',
                       // textAlign: TextAlign.left,
@@ -96,22 +106,23 @@ class report extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  SizedBox(height: 100.0,),
+                  SizedBox(
+                    height: 100.0,
+                  ),
                   Container(
                     height: 250.0,
                     width: 250.0,
                     decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image:FileImage(File(imagePath)),
-                                      fit: BoxFit.cover),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                        image: DecorationImage(
+                            image: FileImage(File(imagePath)),
+                            fit: BoxFit.cover),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
                   )
                 ],
               ),
             ],
           ),
-
         ],
       ),
     );

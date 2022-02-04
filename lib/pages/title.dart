@@ -10,11 +10,13 @@ class title extends StatefulWidget {
 }
 
 class _titleState extends State<title> {
+  final theImage = AssetImage('assets/background.jpeg');
   @override
   void initState() {
+    // precacheImage(theImage, context);
     super.initState();
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 10),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) => login(),
@@ -31,9 +33,7 @@ class _titleState extends State<title> {
         width: MediaQuery.of(context).size.width * 1,
         height: MediaQuery.of(context).size.height * 1,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/background.jpeg"),
-                fit: BoxFit.cover)),
+            image: DecorationImage(image: theImage, fit: BoxFit.cover)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
