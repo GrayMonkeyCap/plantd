@@ -1,12 +1,42 @@
-// ignore_for_file: deprecated_member_use
-
+import 'dart:io';
 import 'package:firstapp/pages/login.dart';
+import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class home extends StatelessWidget {
+
+class home extends StatefulWidget {
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
   final AuthService _auth = AuthService();
+  File? _image;
+  final picker = ImagePicker();
+
+  Image? _imageWidget;
+
+  Future getImage() async {
+    XFile? pickedFile = await picker.pickImage(source: ImageSource.camera);
+
+    setState(() async{
+      _image = File(pickedFile!.path);
+      _imageWidget = Image.file(_image!);
+      await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => report(
+                                  // Pass the automatically generated path to
+                                  // the DisplayPictureScreen widget.
+                                  imagePath: pickedFile.path,
+                                ),
+                              ),
+                            );
+      //_predict();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -90,7 +120,9 @@ class home extends StatelessWidget {
                               size: 170, color: Colors.blueGrey[900])),
                       FlatButton(
                         onPressed: () =>
-                            {Navigator.pushReplacementNamed(context, '/scan')},
+                            { getImage()
+                              //Navigator.pushReplacementNamed(context, '/scan')
+                              },
                         child: Text('Scan'),
                         textColor: Colors.white,
                         color: Colors.blueGrey[900],
