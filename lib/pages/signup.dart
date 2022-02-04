@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapp/services/auth.dart';
+import 'package:flutter/gestures.dart';
 
 class signup extends StatefulWidget {
   @override
