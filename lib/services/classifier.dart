@@ -84,7 +84,7 @@ abstract class Classifier {
         .process(_inputImage);
   }
 
-  Category predict(Image image) {
+  String predict(Image image) {
     final pres = DateTime.now().millisecondsSinceEpoch;
     _inputImage = TensorImage(_inputType);
     _inputImage.loadImage(image);
@@ -105,7 +105,7 @@ abstract class Classifier {
     print(labeledProb);
     final pred = getTopProbability(labeledProb);
 
-    return Category(pred.key, pred.value);
+    return (pred.key);
   }
 
   void close() {

@@ -10,9 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 
-
-
-
 class home extends StatefulWidget {
   @override
   State<home> createState() => _homeState();
@@ -23,43 +20,45 @@ class _homeState extends State<home> {
   final AuthService _auth = AuthService();
   File? _image;
   final picker = ImagePicker();
-  Category? category;
+  String? category = "";
   Image? _imageWidget;
 
-  void _predict() async {
+  String _predict() {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
     //_classifier.predict(imageInput);
     print('hello1');
     var pred = _classifier.predict(imageInput);
+    print(pred);
     print('hello2');
-    setState(() {
-      category = pred;
-    });
+    return (pred);
   }
 
   Future getImage() async {
     XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    setState(() async{
+    setState(() async {
       _image = File(pickedFile!.path);
       _imageWidget = Image.file(_image!);
-      _predict();
+      category = _predict();
+
       await Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => report(
-                                  // Pass the automatically generated path to
-                                  // the DisplayPictureScreen widget.
-                                  imagePath: pickedFile.path,
-                                ),
-                              ),
-                            );
+        MaterialPageRoute(
+          builder: (context) => report(
+              // Pass the automatically generated path to
+              // the DisplayPictureScreen widget.
+              imagePath: pickedFile.path,
+              category: category),
+        ),
+      );
     });
   }
+
   @override
   void initState() {
     super.initState();
     _classifier = ClassifierQuant();
   }
+
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints.expand(),
@@ -141,10 +140,10 @@ class _homeState extends State<home> {
                           child: Icon(Icons.qr_code_scanner,
                               size: 170, color: Colors.blueGrey[900])),
                       FlatButton(
-                        onPressed: () =>
-                            { getImage()
-                              //Navigator.pushReplacementNamed(context, '/scan')
-                              },
+                        onPressed: () => {
+                          getImage()
+                          //Navigator.pushReplacementNamed(context, '/scan')
+                        },
                         child: Text('Scan'),
                         textColor: Colors.white,
                         color: Colors.blueGrey[900],

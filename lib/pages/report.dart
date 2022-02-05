@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class report extends StatelessWidget {
   final String imagePath;
-  report({required this.imagePath});
+  final String? category;
+  report({required this.imagePath, this.category});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,12 +69,12 @@ class report extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
+                  children: <Widget>[
                     SizedBox(
                       height: 80.0,
                     ),
                     Text(
-                      'Diseases:',
+                      'Diseases: $category',
                       // textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize: 25,

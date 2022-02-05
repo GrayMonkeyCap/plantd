@@ -1,10 +1,10 @@
-Tomato___Tomato_mosaic_virus
-Tomato___Early_blight
-Tomato___Septoria_leaf_spot
-Tomato___Bacterial_spot
-Tomato___Target_Spot
-Tomato___Spider_mites Two-spotted_spider_mite
-Tomato___Tomato_Yellow_Leaf_Curl_Virus
-Tomato___Late_blight
-Tomato___healthy
-Tomato___Leaf_Mold
+Tomato mosaic virus
+Early blight
+Septoria leaf spot
+Bacterial spot
+Target Spot
+Spider mites Two-spotted spider mite
+Tomato Yellow Leaf Curl Virus
+Late blight
+healthy
+Leaf Mold
