@@ -2,9 +2,15 @@ import 'dart:io';
 import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/services/auth.dart';
+import 'package:firstapp/services/classifier.dart';
+import 'package:firstapp/services/classifier_quant.dart';
+import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image/image.dart' as img;
+
+
 
 
 class home extends StatefulWidget {
@@ -13,18 +19,31 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  late Classifier _classifier;
   final AuthService _auth = AuthService();
   File? _image;
   final picker = ImagePicker();
-
+  Category? category;
   Image? _imageWidget;
 
+  void _predict() async {
+    img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
+    //_classifier.predict(imageInput);
+    print('hello1');
+    var pred = _classifier.predict(imageInput);
+    print('hello2');
+    setState(() {
+      category = pred;
+    });
+  }
+
   Future getImage() async {
-    XFile? pickedFile = await picker.pickImage(source: ImageSource.camera);
+    XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     setState(() async{
       _image = File(pickedFile!.path);
       _imageWidget = Image.file(_image!);
+      _predict();
       await Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => report(
@@ -34,10 +53,13 @@ class _homeState extends State<home> {
                                 ),
                               ),
                             );
-      //_predict();
     });
   }
   @override
+  void initState() {
+    super.initState();
+    _classifier = ClassifierQuant();
+  }
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints.expand(),
