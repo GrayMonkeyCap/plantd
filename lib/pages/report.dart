@@ -1,11 +1,28 @@
 // import 'dart:html';
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class report extends StatelessWidget {
+  var remedy = {
+    'Early blight': 'Dolo',
+    'Tomato mosaic virus': 'Crocine',
+    'Septoria leaf spot': 'Akhil'
+  };
+
+  var desc = {
+    'Early blight': 'High fever',
+    'Tomato mosaic virus': 'Crocine',
+    'Septoria leaf spot': 'Akhil'
+  };
+
   final String imagePath;
   final String? category;
+  final db = AuthService().db;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   report({required this.imagePath, this.category});
   @override
   Widget build(BuildContext context) {
@@ -83,7 +100,7 @@ class report extends StatelessWidget {
                     ),
                     SizedBox(height: 40.0),
                     Text(
-                      'Description:',
+                      'Description: ${desc[category]}',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
@@ -91,11 +108,54 @@ class report extends StatelessWidget {
                     ),
                     SizedBox(height: 40.0),
                     Text(
-                      'Remedy:',
+                      'Remedy: ${remedy[category]}',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
                       ),
+                    ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () async {
+                            final User? user = _auth.currentUser;
+                            final uid = user!.uid;
+                            DateTime dateToday = new DateTime.now();
+                            String date = dateToday.toString().substring(0, 10);
+                            final results = await db
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reports')
+                                .doc()
+                                .set({
+                              "Disease": category,
+                              "Description": desc[category],
+                              "Remedy": desc[category],
+                              "Date": date,
+                              "image": "hello I am a image"
+                            });
+                          },
+                          child: const Text(
+                            'SAVE',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                letterSpacing: 1.25),
+                          ),
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  (MaterialStateProperty.all(Colors.teal[900])),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ))),
+                        ),
+                      ],
                     ),
                   ],
                 ),

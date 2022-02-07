@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/models/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
 
   // create user obj based on firebase
   MyUser? _userFromFirebaseUser(User? user) {
@@ -51,11 +53,15 @@ class AuthService {
   }
 
   //register
-  Future register(String email, String password) async {
+  Future register(
+      String email, String password, String name, String phone) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+
+      final new_user = await db.collection('users').doc(user!.uid).set(
+          {"Name": name, "Email": email, "Password": password, "Phone": phone});
 
       return _userFromFirebaseUser(user);
     } catch (e) {

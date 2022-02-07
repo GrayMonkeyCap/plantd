@@ -198,8 +198,8 @@ class _signupState extends State<signup> {
                           child: TextButton(
                             onPressed: () async {
                               if (_formkey.currentState!.validate()) {
-                                dynamic result =
-                                    await _auth.register(email, password);
+                                dynamic result = await _auth.register(
+                                    email, password, name, phone);
                                 if (result == null) {
                                   setState(() =>
                                       error = 'Please enter a valid Email Id');
