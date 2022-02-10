@@ -14,7 +14,7 @@ class _previous_reportState extends State<previous_report> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  late var reports;
+  List reports = [];
   fetch_report() async {
     final User? user = _auth.currentUser;
     final uid = user!.uid;
@@ -25,13 +25,15 @@ class _previous_reportState extends State<previous_report> {
       Map<String, dynamic> data = queryDocumentSnapshot.data();
       result.add(data);
     }
-    return (result);
+    setState(() {
+      reports = result;
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    reports = fetch_report();
+    fetch_report();
   }
 
   Widget build(BuildContext context) {
@@ -77,101 +79,77 @@ class _previous_reportState extends State<previous_report> {
         ),
         body: Container(
             height: MediaQuery.of(context).size.height * 1,
+            width: MediaQuery.of(context).size.width * 1,
             color: Colors.blueGrey[600],
-            child: SingleChildScrollView(
-              child: Column(
-                  children: reports.map((report) {
-                return Container(
-                  margin: EdgeInsets.all(15.0),
-                  padding: EdgeInsets.all(17.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        offset: const Offset(
-                          0,
-                          3,
-                        ),
-                        blurRadius: 5.0,
-                        spreadRadius: 0.2,
-                      ),
-                    ],
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                  child: Text(
+                    'Previous Reports',
+                    style: TextStyle(
+                      fontFamily: 'salsa',
+                      fontSize: 25.0,
+                    ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'DISEASE NAME',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                      children: reports.map((data) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => report(
+                            // Pass the automatically generated path to
+                            // the DisplayPictureScreen widget.
+                            imagePath: data["image"],
+                            category: data["Disease"], isprevreport: true,
                           ),
-                          Text(
-                            '99/99/9999',
-                            style: TextStyle(fontWeight: FontWeight.w300),
-                          )
-                        ],
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(15.0),
+                        padding: EdgeInsets.all(17.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: const Offset(
+                                0,
+                                3,
+                              ),
+                              blurRadius: 5.0,
+                              spreadRadius: 0.2,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  '${data["Disease"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  '${data["Date"]}',
+                                  style: TextStyle(fontWeight: FontWeight.w300),
+                                )
+                              ],
+                            ),
+                            Icon(Icons.info_outline_rounded)
+                          ],
+                        ),
                       ),
-                      Icon(Icons.info_outline_rounded)
-                    ],
-                  ),
-                );
-              }).toList()
-                  // Padding(
-                  //   padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                  //   child: Text(
-                  //     'Previous Reports',
-                  //     style: TextStyle(
-                  //       fontFamily: 'salsa',
-                  //       fontSize: 25.0,
-                  //     ),
-                  //   ),
-                  // ),
-                  // Container(
-                  //   margin: EdgeInsets.all(15.0),
-                  //   padding: EdgeInsets.all(17.0),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(10.0),
-                  //     color: Colors.white,
-                  //     boxShadow: [
-                  //       BoxShadow(
-                  //         color: Colors.black26,
-                  //         offset: const Offset(
-                  //           0,
-                  //           3,
-                  //         ),
-                  //         blurRadius: 5.0,
-                  //         spreadRadius: 0.2,
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       Column(
-                  //         children: [
-                  //           Text(
-                  //             'DISEASE NAME',
-                  //             style: TextStyle(
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //           Text(
-                  //             '99/99/9999',
-                  //             style: TextStyle(fontWeight: FontWeight.w300),
-                  //           )
-                  //         ],
-                  //       ),
-                  //       Icon(Icons.info_outline_rounded)
-                  //     ],
-                  //   ),
-                  // ),
-
-                  ),
+                    );
+                  }).toList()),
+                ),
+              ],
             )));
   }
 }

@@ -22,6 +22,7 @@ class _homeState extends State<home> {
   final picker = ImagePicker();
   String? category = "";
   Image? _imageWidget;
+  late bool scancamera;
 
   String _predict() {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
@@ -33,24 +34,45 @@ class _homeState extends State<home> {
     return (pred);
   }
 
-  Future getImage() async {
-    XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  Future getImage(scancamera) async {
+    XFile? pickedFile;
+    if (scancamera) {
+      XFile? pickedFile = await picker.pickImage(source: ImageSource.camera);
+      setState(() async {
+        _image = File(pickedFile!.path);
+        _imageWidget = Image.file(_image!);
+        category = _predict();
 
-    setState(() async {
-      _image = File(pickedFile!.path);
-      _imageWidget = Image.file(_image!);
-      category = _predict();
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => report(
+                // Pass the automatically generated path to
+                // the DisplayPictureScreen widget.
+                imagePath: pickedFile.path,
+                category: category,
+                isprevreport: false),
+          ),
+        );
+      });
+    } else {
+      XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
+      setState(() async {
+        _image = File(pickedFile!.path);
+        _imageWidget = Image.file(_image!);
+        category = _predict();
 
-      await Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => report(
-              // Pass the automatically generated path to
-              // the DisplayPictureScreen widget.
-              imagePath: pickedFile.path,
-              category: category),
-        ),
-      );
-    });
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => report(
+                // Pass the automatically generated path to
+                // the DisplayPictureScreen widget.
+                imagePath: pickedFile.path,
+                category: category,
+                isprevreport: false),
+          ),
+        );
+      });
+    }
   }
 
   @override
@@ -134,17 +156,36 @@ class _homeState extends State<home> {
                           topRight: Radius.circular(40.0),
                           topLeft: Radius.circular(40.0))),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                           child: Icon(Icons.qr_code_scanner,
                               size: 170, color: Colors.blueGrey[900])),
                       FlatButton(
                         onPressed: () => {
-                          getImage()
+                          scancamera = true,
+                          getImage(scancamera)
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },
                         child: Text('Scan'),
+                        textColor: Colors.white,
+                        color: Colors.blueGrey[900],
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 7.0, bottom: 7.0),
+                        child: const Text(
+                          "OR",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 14.0),
+                        ),
+                      ),
+                      FlatButton(
+                        onPressed: () => {
+                          scancamera = false,
+                          getImage(scancamera)
+                          //Navigator.pushReplacementNamed(context, '/scan')
+                        },
+                        child: Text('Upload'),
                         textColor: Colors.white,
                         color: Colors.blueGrey[900],
                       )

@@ -17,6 +17,7 @@ class _signupState extends State<signup> {
   String password = '';
   String confirmpassword = '';
   String error = '';
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -153,8 +154,8 @@ class _signupState extends State<signup> {
                             onChanged: (val) {
                               setState(() => password = val);
                             },
-                            obscureText: true,
-                            decoration: const InputDecoration(
+                            obscureText: _isObscure,
+                            decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal),
                               ),
@@ -162,7 +163,16 @@ class _signupState extends State<signup> {
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.teal),
                               ),
-                              suffixIcon: Icon(Icons.visibility),
+                              suffixIcon: IconButton(
+                                icon: Icon(_isObscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                },
+                              ),
                               labelText: 'Enter Password',
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
@@ -177,8 +187,8 @@ class _signupState extends State<signup> {
                             onChanged: (val) {
                               setState(() => confirmpassword = val);
                             },
-                            obscureText: true,
-                            decoration: const InputDecoration(
+                            obscureText: _isObscure,
+                            decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal),
                               ),
@@ -186,7 +196,16 @@ class _signupState extends State<signup> {
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.teal),
                               ),
-                              suffixIcon: Icon(Icons.visibility),
+                              suffixIcon: IconButton(
+                                icon: Icon(_isObscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                },
+                              ),
                               labelText: 'Re-Enter Password',
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
@@ -286,6 +305,7 @@ class _signupState extends State<signup> {
                         ))
                   ],
                 ),
+                SizedBox(height: 10.0)
               ],
             ),
           ),
