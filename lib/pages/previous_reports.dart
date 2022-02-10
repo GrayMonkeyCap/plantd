@@ -1,8 +1,35 @@
+import 'dart:developer';
+
+import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class previous_report extends StatelessWidget {
+class previous_report extends StatefulWidget {
   @override
+  State<previous_report> createState() => _previous_reportState();
+}
+
+class _previous_reportState extends State<previous_report> {
+  final db = AuthService().db;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  fetch_report() async {
+    final User? user = _auth.currentUser;
+    final uid = user!.uid;
+    var collection =
+        db.collection('users').doc(uid).collection('reports').doc();
+    var querySnapshot = await collection.get();
+    log(querySnapshot[0]);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetch_report();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(

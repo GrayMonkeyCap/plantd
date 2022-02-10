@@ -138,6 +138,8 @@ class report extends StatelessWidget {
                               "Date": date,
                               "image": "hello I am a image"
                             });
+                            Navigator.pushReplacementNamed(
+                                context, '/previous_reports');
                           },
                           child: const Text(
                             'SAVE',
