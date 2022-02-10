@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
@@ -14,20 +13,26 @@ class _previous_reportState extends State<previous_report> {
   final db = AuthService().db;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  
+  List reports=[];
   fetch_report() async {
     final User? user = _auth.currentUser;
     final uid = user!.uid;
     var collection =
-        db.collection('users').doc(uid).collection('reports').doc();
+        db.collection('users').doc(uid).collection('reports');
     var querySnapshot = await collection.get();
-    log(querySnapshot[0]);
+    List result=[];
+    for (var queryDocumentSnapshot in querySnapshot.docs) {
+      Map<String, dynamic> data = queryDocumentSnapshot.data();
+      result.add(data);
+    }
+    return(result);
   }
 
   @override
   void initState() {
     super.initState();
-    fetch_report();
+    reports=fetch_report();
   }
 
   Widget build(BuildContext context) {
