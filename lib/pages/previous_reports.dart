@@ -1,4 +1,4 @@
-
+import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,26 +13,25 @@ class _previous_reportState extends State<previous_report> {
   final db = AuthService().db;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  
-  List reports=[];
+
+  late var reports;
   fetch_report() async {
     final User? user = _auth.currentUser;
     final uid = user!.uid;
-    var collection =
-        db.collection('users').doc(uid).collection('reports');
+    var collection = db.collection('users').doc(uid).collection('reports');
     var querySnapshot = await collection.get();
-    List result=[];
+    List result = [];
     for (var queryDocumentSnapshot in querySnapshot.docs) {
       Map<String, dynamic> data = queryDocumentSnapshot.data();
       result.add(data);
     }
-    return(result);
+    return (result);
   }
 
   @override
   void initState() {
     super.initState();
-    reports=fetch_report();
+    reports = fetch_report();
   }
 
   Widget build(BuildContext context) {
@@ -81,97 +80,98 @@ class _previous_reportState extends State<previous_report> {
             color: Colors.blueGrey[600],
             child: SingleChildScrollView(
               child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                    child: Text(
-                      'Previous Reports',
-                      style: TextStyle(
-                        fontFamily: 'salsa',
-                        fontSize: 25.0,
+                  children: reports.map((report) {
+                return Container(
+                  margin: EdgeInsets.all(15.0),
+                  padding: EdgeInsets.all(17.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: const Offset(
+                          0,
+                          3,
+                        ),
+                        blurRadius: 5.0,
+                        spreadRadius: 0.2,
                       ),
-                    ),
+                    ],
                   ),
-                  Container(
-                    margin: EdgeInsets.all(15.0),
-                    padding: EdgeInsets.all(17.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black26,
-                          offset: const Offset(
-                            0,
-                            3,
-                          ),
-                          blurRadius: 5.0,
-                          spreadRadius: 0.2,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              'DISEASE NAME',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            'DISEASE NAME',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
                             ),
-                            Text(
-                              '99/99/9999',
-                              style: TextStyle(fontWeight: FontWeight.w300),
-                            )
-                          ],
-                        ),
-                        Icon(Icons.info_outline_rounded)
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(15.0),
-                    padding: EdgeInsets.all(17.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black26,
-                          offset: const Offset(
-                            0,
-                            3,
                           ),
-                          blurRadius: 5.0,
-                          spreadRadius: 0.2,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              'DISEASE NAME',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              '99/99/9999',
-                              style: TextStyle(fontWeight: FontWeight.w300),
-                            )
-                          ],
-                        ),
-                        Icon(Icons.info_outline_rounded)
-                      ],
-                    ),
+                          Text(
+                            '99/99/9999',
+                            style: TextStyle(fontWeight: FontWeight.w300),
+                          )
+                        ],
+                      ),
+                      Icon(Icons.info_outline_rounded)
+                    ],
                   ),
-                ],
-              ),
+                );
+              }).toList()
+                  // Padding(
+                  //   padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                  //   child: Text(
+                  //     'Previous Reports',
+                  //     style: TextStyle(
+                  //       fontFamily: 'salsa',
+                  //       fontSize: 25.0,
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   margin: EdgeInsets.all(15.0),
+                  //   padding: EdgeInsets.all(17.0),
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(10.0),
+                  //     color: Colors.white,
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //         color: Colors.black26,
+                  //         offset: const Offset(
+                  //           0,
+                  //           3,
+                  //         ),
+                  //         blurRadius: 5.0,
+                  //         spreadRadius: 0.2,
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Column(
+                  //         children: [
+                  //           Text(
+                  //             'DISEASE NAME',
+                  //             style: TextStyle(
+                  //               fontWeight: FontWeight.bold,
+                  //             ),
+                  //           ),
+                  //           Text(
+                  //             '99/99/9999',
+                  //             style: TextStyle(fontWeight: FontWeight.w300),
+                  //           )
+                  //         ],
+                  //       ),
+                  //       Icon(Icons.info_outline_rounded)
+                  //     ],
+                  //   ),
+                  // ),
+
+                  ),
             )));
   }
 }
