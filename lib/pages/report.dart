@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
 class report extends StatelessWidget {
   var remedy = {
@@ -113,26 +114,31 @@ class report extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: Text('Report Generated',
+                      style: TextStyle(color:Colors.white,fontSize: 30,fontWeight: FontWeight.w600),),
+                    ),
                     color: Colors.teal[800],
                     height: MediaQuery.of(context).size.height * 0.4),
                 Container(
-                  padding: EdgeInsets.all(40.0),
+                  padding: EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SizedBox(
-                        height: 80.0,
+                        height: 50.0,
                       ),
                       RichText(
                         text: TextSpan(
                           text: 'Disease: ',
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 23,
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Roboto'),
-                          children: <TextSpan>[
+                          children: [
                             TextSpan(
                               text: '$category',
                               style: TextStyle(
@@ -141,10 +147,12 @@ class report extends StatelessWidget {
                                   color: Colors.black,
                                   fontFamily: 'Roboto'),
                             ),
+                            
                           ],
                         ),
                       ),
-                      SizedBox(height: 40.0),
+                      
+                      SizedBox(height: 15.0),
                       RichText(
                         text: TextSpan(
                           text: 'Description: ',
@@ -154,18 +162,29 @@ class report extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Roboto'),
                           children: <TextSpan>[
-                            TextSpan(
-                              text: '${desc[category]}',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                  fontFamily: 'Roboto'),
-                            ),
+                            // TextSpan(
+                            //   text: '${desc[category]}',
+                            //   style: TextStyle(
+                            //       fontSize: 20,
+                            //       fontWeight: FontWeight.w400,
+                            //       color: Colors.black,
+                            //       fontFamily: 'Roboto'),
+                            // ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 40.0),
+                      ReadMoreText(
+                        '${desc[category]}',
+                        trimLines: 2,
+                        colorClickableText: Colors.pink,
+                        trimMode: TrimMode.Line,
+                        style: TextStyle(color: Colors.black,fontSize: 18),
+                        trimCollapsedText: 'Show more',
+                        trimExpandedText: 'Show less',
+                        moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
+                        lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
+                      ),
+                      SizedBox(height: 15.0),
                       RichText(
                         text: TextSpan(
                           text: 'Remedy: ',
@@ -175,16 +194,27 @@ class report extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Roboto'),
                           children: <TextSpan>[
-                            TextSpan(
-                              text: '${remedy[category]}',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Roboto'),
-                            ),
+                            // TextSpan(
+                            //   text: '${remedy[category]}',
+                            //   style: TextStyle(
+                            //       fontSize: 20,
+                            //       color: Colors.black,
+                            //       fontWeight: FontWeight.w400,
+                            //       fontFamily: 'Roboto'),
+                            // ),
                           ],
                         ),
+                      ),
+                      ReadMoreText(
+                        '${remedy[category]}',
+                        trimLines: 2,
+                        colorClickableText: Colors.pink,
+                        trimMode: TrimMode.Line,
+                        style: TextStyle(color: Colors.black,fontSize: 18),
+                        trimCollapsedText: 'Show more',
+                        trimExpandedText: 'Show less',
+                        moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
+                        lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
                       ),
                       SizedBox(
                         height: 15.0,
