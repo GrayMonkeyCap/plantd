@@ -1,10 +1,10 @@
-Tomato mosaic virus
-Early blight
-Septoria leaf spot
 Bacterial spot
-Target Spot
-Spider mites Two-spotted spider mite
-Tomato Yellow Leaf Curl Virus
+Early blight
 Late blight
-Healthy
 Leaf Mold
+Septoria leaf spot
+Spider mites Two-spotted spider mite
+Target Spot
+Tomato Yellow Leaf Curl Virus
+Tomato mosaic virus
+Healthy

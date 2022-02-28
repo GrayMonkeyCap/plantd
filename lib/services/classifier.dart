@@ -53,6 +53,7 @@ abstract class Classifier {
 
       _inputShape = interpreter.getInputTensor(0).shape;
       _outputShape = interpreter.getOutputTensor(0).shape;
+      print(_outputShape);
       _inputType = interpreter.getInputTensor(0).type;
       _outputType = interpreter.getOutputTensor(0).type;
 
@@ -74,12 +75,13 @@ abstract class Classifier {
   }
 
   TensorImage _preProcess() {
-    int cropSize = min(_inputImage.height, _inputImage.width);
+    // int cropSize = min(_inputImage.height, _inputImage.width);
+    int cropSize = 256;
     return ImageProcessorBuilder()
         .add(ResizeWithCropOrPadOp(cropSize, cropSize))
         .add(ResizeOp(
             _inputShape[1], _inputShape[2], ResizeMethod.NEAREST_NEIGHBOUR))
-        .add(preProcessNormalizeOp)
+        .add(postProcessNormalizeOp)
         .build()
         .process(_inputImage);
   }
@@ -100,8 +102,9 @@ abstract class Classifier {
     print('Time to run inference: $run ms');
 
     Map<String, double> labeledProb = TensorLabel.fromList(
-            labels, _probabilityProcessor.process(_outputBuffer))
+            ['0','1','2','3','4','5','6','7','8','9'], _probabilityProcessor.process(_outputBuffer))
         .getMapWithFloatValue();
+    print(_probabilityProcessor.process(_outputBuffer));
     print(labeledProb);
     final pred = getTopProbability(labeledProb);
 
