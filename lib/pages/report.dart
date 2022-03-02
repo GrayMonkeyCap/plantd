@@ -5,6 +5,7 @@ import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:firstapp/widgets/appbar.dart';
 
 class report extends StatelessWidget {
   var remedy = {
@@ -57,50 +58,12 @@ class report extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool isprevreport;
   report({required this.imagePath, this.category, this.isprevreport = false});
+  final AuthService _aauth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal[500],
-        title: RichText(
-          text: TextSpan(
-            text: 'plantd',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 28.0,
-              fontFamily: 'Salsa',
-              letterSpacing: 2.0,
-            ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.pushReplacementNamed(context, '/home');
-              },
-          ),
-        ),
-        actions: [
-          PopupMenuButton(
-              icon: Icon(Icons.menu),
-              onSelected: (value) {
-                if (value == '/previous_reports') {
-                  Navigator.pushReplacementNamed(context, '/previous_reports');
-                } else {
-                  Navigator.pushReplacementNamed(context, '/login');
-                }
-              },
-              itemBuilder: (context) => [
-                    PopupMenuItem(
-                        child: Text("Previous Report"),
-                        value: '/previous_reports'),
-                    PopupMenuItem(
-                      child: Text("Logout"),
-                      value: '/login',
-                    )
-                  ]),
-        ],
-        // backgroundColor: Colors.red[500],
-      ),
-
+      appBar: common_nav_bar(appBar: AppBar(), auth: _aauth),
       // body: const Center(
       //   // child: Image(image: AssetImage('assets/img2.png'),
       //   // ),
@@ -116,8 +79,13 @@ class report extends StatelessWidget {
                 Container(
                     child: Padding(
                       padding: const EdgeInsets.all(40.0),
-                      child: Text('Report Generated',
-                      style: TextStyle(color:Colors.white,fontSize: 30,fontWeight: FontWeight.w600),),
+                      child: Text(
+                        'Report Generated',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                     color: Colors.teal[800],
                     height: MediaQuery.of(context).size.height * 0.4),
@@ -147,11 +115,9 @@ class report extends StatelessWidget {
                                   color: Colors.black,
                                   fontFamily: 'Roboto'),
                             ),
-                            
                           ],
                         ),
                       ),
-                      
                       SizedBox(height: 15.0),
                       RichText(
                         text: TextSpan(
@@ -178,11 +144,17 @@ class report extends StatelessWidget {
                         trimLines: 2,
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
-                        style: TextStyle(color: Colors.black,fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                         trimCollapsedText: 'Show more',
                         trimExpandedText: 'Show less',
-                        moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
-                        lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
+                        moreStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue),
+                        lessStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue),
                       ),
                       SizedBox(height: 15.0),
                       RichText(
@@ -210,11 +182,17 @@ class report extends StatelessWidget {
                         trimLines: 2,
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
-                        style: TextStyle(color: Colors.black,fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                         trimCollapsedText: 'Show more',
                         trimExpandedText: 'Show less',
-                        moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
-                        lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color:Colors.blue),
+                        moreStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue),
+                        lessStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue),
                       ),
                       SizedBox(
                         height: 15.0,

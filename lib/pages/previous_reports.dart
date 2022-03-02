@@ -3,6 +3,7 @@ import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstapp/widgets/appbar.dart';
 
 class previous_report extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _previous_reportState extends State<previous_report> {
   final db = AuthService().db;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final AuthService _aauth = AuthService();
 
   List reports = [];
   fetch_report() async {
@@ -38,45 +40,7 @@ class _previous_reportState extends State<previous_report> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: RichText(
-            text: TextSpan(
-              text: 'plantd',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28.0,
-                fontFamily: 'Salsa',
-                letterSpacing: 2.0,
-              ),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  Navigator.pushReplacementNamed(context, '/');
-                },
-            ),
-          ),
-          backgroundColor: Colors.teal[500],
-          actions: [
-            PopupMenuButton(
-                icon: Icon(Icons.menu),
-                onSelected: (value) {
-                  if (value == '/previous_reports') {
-                    Navigator.pushReplacementNamed(
-                        context, '/previous_reports');
-                  } else {
-                    Navigator.pushReplacementNamed(context, '/login');
-                  }
-                },
-                itemBuilder: (context) => [
-                      PopupMenuItem(
-                          child: Text("Previous Report"),
-                          value: '/previous_reports'),
-                      PopupMenuItem(
-                        child: Text("Logout"),
-                        value: '/login',
-                      )
-                    ]),
-          ],
-        ),
+        appBar: common_nav_bar(appBar: AppBar(), auth: _aauth),
         body: Container(
             height: MediaQuery.of(context).size.height * 1,
             width: MediaQuery.of(context).size.width * 1,

@@ -9,6 +9,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
+import 'package:get/get.dart';
+import 'package:firstapp/widgets/appbar.dart';
 
 class home extends StatefulWidget {
   @override
@@ -43,7 +45,7 @@ class _homeState extends State<home> {
       setState(() async {
         _image = File(pickedFile!.path);
         _imageWidget = Image.file(_image!);
-        var index= int.parse(_predict());
+        var index = int.parse(_predict());
         category = labels[index];
 
         await Navigator.of(context).push(
@@ -62,7 +64,7 @@ class _homeState extends State<home> {
       setState(() async {
         _image = File(pickedFile!.path);
         _imageWidget = Image.file(_image!);
-        var index= int.parse(_predict());
+        var index = int.parse(_predict());
         category = labels[index];
 
         await Navigator.of(context).push(
@@ -93,49 +95,7 @@ class _homeState extends State<home> {
               image: AssetImage("assets/hello.png"), fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: RichText(
-            text: TextSpan(
-              text: 'plantd',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28.0,
-                fontFamily: 'Salsa',
-                letterSpacing: 2.0,
-              ),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  Navigator.pushReplacementNamed(context, '/home');
-                },
-            ),
-          ),
-          backgroundColor: Colors.teal,
-          elevation: 1.0,
-          actions: [
-            PopupMenuButton(
-                icon: Icon(Icons.menu),
-                onSelected: (value) async {
-                  if (value == '/previous_reports') {
-                    Navigator.pushReplacementNamed(
-                        context, '/previous_reports');
-                  } else {
-                    //Navigator.pushReplacementNamed(context, '/signup');
-                    await _auth.signOut();
-                    //.then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
-
-                  }
-                },
-                itemBuilder: (context) => [
-                      PopupMenuItem(
-                          child: Text("Previous Report"),
-                          value: '/previous_reports'),
-                      PopupMenuItem(
-                        child: Text("Logout"),
-                        value: '/login',
-                      )
-                    ]),
-          ],
-        ),
+        appBar: common_nav_bar(appBar: AppBar(), auth: _auth),
         body: Stack(
           children: [
             Column(
@@ -144,7 +104,7 @@ class _homeState extends State<home> {
                 Container(
                     margin: const EdgeInsets.only(top: 80),
                     child: Text(
-                      "Scan the leaf's image",
+                      "homepage_title".tr,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 32.0,
@@ -171,7 +131,7 @@ class _homeState extends State<home> {
                           getImage(scancamera)
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },
-                        child: Text('Scan'),
+                        child: Text('scan_button'.tr),
                         textColor: Colors.white,
                         color: Colors.blueGrey[900],
                       ),
@@ -189,7 +149,7 @@ class _homeState extends State<home> {
                           getImage(scancamera)
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },
-                        child: Text('Upload'),
+                        child: Text('upload_button'.tr),
                         textColor: Colors.white,
                         color: Colors.blueGrey[900],
                       )
