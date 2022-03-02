@@ -1,3 +1,4 @@
+import 'package:firstapp/pages/selectlang.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:firstapp/services/localization_service.dart';
 import 'package:firstapp/wrapper.dart';
@@ -31,7 +32,8 @@ class App extends StatelessWidget {
         routes: {
           // ignore: prefer_const_constructors
           //'/': (context) => title(),
-          '/home': (context) => home(),
+          '/home': (context) => Selectlang(),
+          // '/home': (context) => home(),
           '/login': (context) => login(),
           //'/report': (context) => report(),
           '/previous_reports': (context) => previous_report(),
