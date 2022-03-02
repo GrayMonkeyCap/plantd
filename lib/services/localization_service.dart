@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../lang/hi_IN.dart';
 import '../lang/ml_IN.dart';
+import '../lang/mr_IN.dart';
 
 class LocalizationService extends Translations {
   // Default locale
@@ -13,7 +14,7 @@ class LocalizationService extends Translations {
 
   // Supported languages
   // Needs to be same order with locales
-  static final langs = ['English', 'Hindi','Malayalam'];
+  static final langs = ['English', 'Hindi','Malayalam', 'Marathi'];
 
   // Supported locales
   // Needs to be same order with langs
@@ -21,6 +22,7 @@ class LocalizationService extends Translations {
     Locale('en', 'US'),
     Locale('hi', 'IN'),
     Locale('ml', 'IN'),
+    Locale('mr', 'IN'),
   ];
 
   // Keys and their translations
@@ -29,6 +31,7 @@ class LocalizationService extends Translations {
   Map<String, Map<String, String>> get keys => {
         'hi_IN': hiIN, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
         'ml_IN': mlIN, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
+        'mr_IN': mrIN, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
       };
 
   // Gets locale from language, and updates the locale
