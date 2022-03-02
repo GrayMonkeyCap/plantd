@@ -1,25 +1,28 @@
 const Map<String, String> hiIN = {
+  //title
+  'Tomato plant disease detection system':
+      'टमाटर के पौधे की बीमारी का पता लगाने प्रणाली',
   //login page
-  'welcome to': 'प्लांटेड',
-  'please login to continue': 'प्लांटेड',
-  'sign in with google': 'प्लांटेड',
-  'email/phone': 'प्लांटेड',
-  'password': 'प्लांटेड',
-  'login': 'प्लांटेड',
-  'or': 'प्लांटेड',
-  'sign in guest': 'प्लांटेड',
-  'Dont have an account yet?': 'प्लांटेड',
-  'signup': 'प्लांटेड',
-  'here': 'प्लांटेड',
+  'Welcome to': 'में आपका स्वागत है',
+  'Please login to continue': 'जारी रखने के लिए कृपया लॉगिन करें',
+  'Sign in with Google': 'गूगल के साथ साइन इन करें',
+  'email/phone': 'ईमेल / फोन नंबर',
+  'password': 'पासवर्ड',
+  'login': 'लॉगिन',
+  'or': 'नहीं तोड',
+  'sign in guest': 'अतिथि के रूप में साइन इन करें',
+  'Dont have an account yet?': 'अभी तक एक खाता नहीं है?',
+  'signup': 'साइनअप',
+  'here': 'यहाँ',
 //signup page
-  'signup here': 'प्लांटेड',
-  'in just 1 step': 'प्लांटेड',
-  'Enter name': 'प्लांटेड',
-  'Enter Email Id': 'प्लांटेड',
-  'Enter Phone no': 'प्लांटेड',
-  'Enter Password': 'प्लांटेड',
-  'Re-Enter Password': 'प्लांटेड',
-  'Already have an account?': 'प्लांटेड',
+  'signup here': 'साइनअप यहाँ',
+  'in just 1 step': 'केवल 1 कदम में',
+  'Enter name': 'नाम दर्ज करें',
+  'Enter Email Id': 'ईमेल आईडी दर्ज करें',
+  'Enter Phone no': 'फ़ोन नंबर दर्ज करें',
+  'Enter Password': 'पासवर्ड दर्ज करें',
+  'Re-Enter Password': 'पासवर्ड पुन: दर्ज करें',
+  'Already have an account?': 'पहले से ही एक खाता है?',
 
 //home page
   'appname': 'प्लांटेड',
@@ -30,14 +33,14 @@ const Map<String, String> hiIN = {
   'logout': 'लॉगआउट',
 
 // reports
-  'Report Generated': 'प्लांटेड',
-  'Disease': 'प्लांटेड',
-  'Description': 'प्लांटेड',
-  'Remedy': 'प्लांटेड',
-  'Save': 'प्लांटेड',
-  'show less': 'प्लांटेड',
-  'show more': 'प्लांटेड',
+  'Report Generated': 'रिपोर्ट बनाई गई',
+  'Disease:': 'रोग',
+  'Description:': 'वर्णन',
+  'Remedy:': 'उपाय',
+  'Save': 'जामा कारे',
+  'show less': 'कम दिखाना',
+  'show more': 'अधिक दिखाएँ',
 
 //previous report
-  'Previous Reports': 'प्लांटेड',
+  'Previous Reports': 'पिछली रिपोर्ट',
 };

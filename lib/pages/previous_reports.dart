@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/widgets/appbar.dart';
+import 'package:get/get.dart';
 
 class previous_report extends StatefulWidget {
   @override
@@ -50,7 +51,7 @@ class _previous_reportState extends State<previous_report> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
                   child: Text(
-                    'Previous Reports',
+                    'Previous Reports'.tr,
                     style: TextStyle(
                       fontFamily: 'salsa',
                       fontSize: 25.0,

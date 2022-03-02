@@ -1,6 +1,7 @@
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:get/get.dart';
 
 class login extends StatefulWidget {
   @override
@@ -36,11 +37,11 @@ class _loginState extends State<login> {
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Salsa'),
                             children: [
-                          const TextSpan(
-                              text: "Welcome to ",
+                          TextSpan(
+                              text: "Welcome to".tr,
                               style: TextStyle(color: Colors.white)),
                           TextSpan(
-                            text: "plantd",
+                            text: "plantd".tr,
                             style: TextStyle(
                               color: Colors.teal[900],
                             ),
@@ -49,8 +50,8 @@ class _loginState extends State<login> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(bottom: 20.0),
-                    child: const Text(
-                      "PLEASE LOGIN TO CONTINUE",
+                    child: Text(
+                      "Please login to continue".tr,
                       style: TextStyle(
                           color: Colors.white,
                           letterSpacing: 1.25,
@@ -85,13 +86,13 @@ class _loginState extends State<login> {
                                 width: 20.0,
                               ),
                               label: Text(
-                                "Sign in with Google ",
+                                "Sign in with Google".tr,
                                 style: TextStyle(color: Colors.grey),
                               ),
                             ),
                           ),
                           Container(
-                            child: const Text("OR"),
+                            child: Text("or".tr),
                           ),
                           SizedBox(height: 20.0),
                           Container(
@@ -101,7 +102,7 @@ class _loginState extends State<login> {
                               onChanged: (val) {
                                 setState(() => email = val);
                               },
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.teal),
                                 ),
@@ -109,7 +110,7 @@ class _loginState extends State<login> {
                                   borderSide:
                                       BorderSide(width: 1, color: Colors.teal),
                                 ),
-                                labelText: 'Email/PhoneNo.',
+                                labelText: 'email/phone'.tr,
                                 labelStyle: TextStyle(color: Colors.teal),
                               ),
                             ),
@@ -139,7 +140,7 @@ class _loginState extends State<login> {
                                     });
                                   },
                                 ),
-                                labelText: 'Password',
+                                labelText: 'password'.tr,
                                 labelStyle: TextStyle(color: Colors.teal),
                               ),
                             ),
@@ -158,8 +159,8 @@ class _loginState extends State<login> {
                                   }
                                 }
                               },
-                              child: const Text(
-                                'LOG IN',
+                              child: Text(
+                                'login'.tr,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 12.0,
@@ -177,7 +178,7 @@ class _loginState extends State<login> {
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 10.0),
-                            child: const Text("OR"),
+                            child: Text("or".tr),
                           ),
                           Container(
                             child: TextButton.icon(
@@ -196,7 +197,7 @@ class _loginState extends State<login> {
                                 width: 20.0,
                               ),
                               label: Text(
-                                "Sign in anonymously",
+                                "sign in guest".tr,
                                 style: TextStyle(color: Colors.grey),
                               ),
                             ),
@@ -214,8 +215,8 @@ class _loginState extends State<login> {
                       Container(
                         margin: EdgeInsets.only(
                             left: MediaQuery.of(context).size.width * 0.05),
-                        child: const Text(
-                          "DON'T HAVE ACCOUNT YET?",
+                        child: Text(
+                          "Dont have an account yet?".tr,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -237,7 +238,7 @@ class _loginState extends State<login> {
                                 text: '',
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'SIGNUP',
+                                    text: 'signup'.tr,
                                     style: TextStyle(
                                         color: Colors.teal[900],
                                         fontWeight: FontWeight.bold,
@@ -251,7 +252,7 @@ class _loginState extends State<login> {
                                       },
                                   ),
                                   TextSpan(
-                                    text: '  HERE',
+                                    text: 'here'.tr,
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,

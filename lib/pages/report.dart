@@ -6,6 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:firstapp/widgets/appbar.dart';
+import 'package:get/get.dart';
 
 class report extends StatelessWidget {
   var remedy = {
@@ -80,7 +81,7 @@ class report extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(40.0),
                       child: Text(
-                        'Report Generated',
+                        'Report Generated'.tr,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -100,7 +101,7 @@ class report extends StatelessWidget {
                       ),
                       RichText(
                         text: TextSpan(
-                          text: 'Disease: ',
+                          text: 'Disease:'.tr,
                           style: TextStyle(
                               fontSize: 23,
                               color: Colors.black,
@@ -121,7 +122,7 @@ class report extends StatelessWidget {
                       SizedBox(height: 15.0),
                       RichText(
                         text: TextSpan(
-                          text: 'Description: ',
+                          text: 'Description:'.tr,
                           style: TextStyle(
                               fontSize: 23,
                               color: Colors.black,
@@ -145,8 +146,8 @@ class report extends StatelessWidget {
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
                         style: TextStyle(color: Colors.black, fontSize: 18),
-                        trimCollapsedText: 'Show more',
-                        trimExpandedText: 'Show less',
+                        trimCollapsedText: 'show more'.tr,
+                        trimExpandedText: 'show less'.tr,
                         moreStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -159,7 +160,7 @@ class report extends StatelessWidget {
                       SizedBox(height: 15.0),
                       RichText(
                         text: TextSpan(
-                          text: 'Remedy: ',
+                          text: 'Remedy:'.tr,
                           style: TextStyle(
                               fontSize: 23,
                               color: Colors.black,
@@ -183,8 +184,8 @@ class report extends StatelessWidget {
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
                         style: TextStyle(color: Colors.black, fontSize: 18),
-                        trimCollapsedText: 'Show more',
-                        trimExpandedText: 'Show less',
+                        trimCollapsedText: 'show more'.tr,
+                        trimExpandedText: 'show less'.tr,
                         moreStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -223,8 +224,8 @@ class report extends StatelessWidget {
                                     Navigator.pushReplacementNamed(
                                         context, '/previous_reports');
                                   },
-                                  child: const Text(
-                                    'SAVE',
+                                  child: Text(
+                                    'save'.tr,
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 15.0,

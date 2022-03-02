@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
+import 'package:get/get.dart';
 
 class signup extends StatefulWidget {
   @override
@@ -36,7 +37,7 @@ class _signupState extends State<signup> {
                       top: MediaQuery.of(context).size.width * 0.03,
                       bottom: MediaQuery.of(context).size.width * 0.05),
                   child: RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                           style: TextStyle(
                               fontSize: 30.0,
                               letterSpacing: 1.25,
@@ -44,7 +45,7 @@ class _signupState extends State<signup> {
                               fontFamily: 'Salsa'),
                           children: [
                         TextSpan(
-                            text: "SignUp Here ",
+                            text: "signup here".tr,
                             style: TextStyle(color: Colors.white)),
                       ])),
                 ),
@@ -54,8 +55,8 @@ class _signupState extends State<signup> {
                       margin: EdgeInsets.only(
                           bottom: MediaQuery.of(context).size.width * 0.02,
                           left: MediaQuery.of(context).size.width * 0.05),
-                      child: const Text(
-                        "IN JUST 1 STEP",
+                      child: Text(
+                        "in just 1 step".tr,
                         style: TextStyle(
                             color: Colors.white,
                             letterSpacing: 1.25,
@@ -84,11 +85,11 @@ class _signupState extends State<signup> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: TextFormField(
                             validator: (val) =>
-                                val!.isEmpty ? 'Enter name' : null,
+                                val!.isEmpty ? 'Enter Name'.tr : null,
                             onChanged: (val) {
                               setState(() => name = val);
                             },
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal),
                               ),
@@ -96,7 +97,7 @@ class _signupState extends State<signup> {
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.teal),
                               ),
-                              labelText: 'Enter Name',
+                              labelText: 'Enter Name'.tr,
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
                           ),
@@ -106,11 +107,11 @@ class _signupState extends State<signup> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: TextFormField(
                             validator: (val) =>
-                                val!.isEmpty ? 'Enter email' : null,
+                                val!.isEmpty ? 'Enter Email Id'.tr : null,
                             onChanged: (val) {
                               setState(() => email = val);
                             },
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal),
                               ),
@@ -118,7 +119,7 @@ class _signupState extends State<signup> {
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.teal),
                               ),
-                              labelText: 'Enter EmailId',
+                              labelText: 'Enter Email Id'.tr,
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
                           ),
@@ -128,11 +129,11 @@ class _signupState extends State<signup> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: TextFormField(
                             validator: (val) =>
-                                val!.isEmpty ? 'Enter phone no' : null,
+                                val!.isEmpty ? 'Enter Phone no'.tr : null,
                             onChanged: (val) {
                               setState(() => phone = val);
                             },
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal),
                               ),
@@ -140,7 +141,7 @@ class _signupState extends State<signup> {
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.teal),
                               ),
-                              labelText: 'Enter PhoneNo.',
+                              labelText: 'Enter Phone no'.tr,
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
                           ),
@@ -150,7 +151,7 @@ class _signupState extends State<signup> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: TextFormField(
                             validator: (val) =>
-                                val!.isEmpty ? 'Enter password' : null,
+                                val!.isEmpty ? 'Enter Password'.tr : null,
                             onChanged: (val) {
                               setState(() => password = val);
                             },
@@ -173,7 +174,7 @@ class _signupState extends State<signup> {
                                   });
                                 },
                               ),
-                              labelText: 'Enter Password',
+                              labelText: 'Enter Password'.tr,
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
                           ),
@@ -206,7 +207,7 @@ class _signupState extends State<signup> {
                                   });
                                 },
                               ),
-                              labelText: 'Re-Enter Password',
+                              labelText: 'Re-Enter Password'.tr,
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
                           ),
@@ -226,8 +227,8 @@ class _signupState extends State<signup> {
                                 Navigator.pushReplacementNamed(context, '/');
                               }
                             },
-                            child: const Text(
-                              'SIGN UP',
+                            child: Text(
+                              'signup'.tr,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 12.0,
@@ -255,8 +256,8 @@ class _signupState extends State<signup> {
                     Container(
                       margin: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * 0.05),
-                      child: const Text(
-                        "ALREADY HAVE AN ACCOUNT ?",
+                      child: Text(
+                        "Already have an account?".tr,
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -278,7 +279,7 @@ class _signupState extends State<signup> {
                               text: '',
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: 'LOGIN',
+                                  text: 'login'.tr,
                                   style: TextStyle(
                                       color: Colors.teal[900],
                                       fontWeight: FontWeight.bold,
@@ -291,8 +292,8 @@ class _signupState extends State<signup> {
                                           context, '/login');
                                     },
                                 ),
-                                const TextSpan(
-                                  text: '  HERE',
+                                TextSpan(
+                                  text: 'here'.tr,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,

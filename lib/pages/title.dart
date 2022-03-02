@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:firstapp/pages/login.dart';
+import 'package:get/get.dart';
 
 class title extends StatefulWidget {
   const title({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _titleState extends State<title> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'plantd',
+              'appname'.tr,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 102.0,
@@ -51,7 +52,7 @@ class _titleState extends State<title> {
               height: 15,
             ),
             Text(
-              'Tomato plant disease detection system',
+              'Tomato plant disease detection system'.tr,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
