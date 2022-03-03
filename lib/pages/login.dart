@@ -1,7 +1,9 @@
+import 'package:firstapp/models/user.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class login extends StatefulWidget {
   @override
@@ -247,8 +249,18 @@ class _loginState extends State<login> {
                                         letterSpacing: 1.25),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        Navigator.pushReplacementNamed(
-                                            context, '/signup');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (newcontext) =>
+                                                  StreamProvider<MyUser?>.value(
+                                                      catchError: (context, e) {
+                                                        print(e.toString());
+                                                      },
+                                                      value: AuthService().user,
+                                                      initialData: null,
+                                                      child: login())),
+                                        );
                                       },
                                   ),
                                   TextSpan(

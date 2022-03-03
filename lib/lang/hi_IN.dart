@@ -1,7 +1,4 @@
 const Map<String, String> hiIN = {
-  //title
-  'Tomato plant disease detection system':
-      'टमाटर के पौधे की बीमारी का पता लगाने प्रणाली',
   //login page
   'Welcome to': 'में आपका स्वागत है',
   'Please login to continue': 'जारी रखने के लिए कृपया लॉगिन करें',

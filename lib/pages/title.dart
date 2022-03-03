@@ -39,7 +39,7 @@ class _titleState extends State<title> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'appname'.tr,
+              'Plantd',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 102.0,
@@ -52,7 +52,7 @@ class _titleState extends State<title> {
               height: 15,
             ),
             Text(
-              'Tomato plant disease detection system'.tr,
+              'Tomato plant disease detection system',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

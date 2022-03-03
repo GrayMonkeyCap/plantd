@@ -1,7 +1,4 @@
 const Map<String, String> paIN = {
-  //title
-  'Tomato plant disease detection system':
-      'टमाटर के पौधे की बीमारी का पता लगाने प्रणाली',
   //login page
   'Welcome to': 'ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ',
   'Please login to continue': 'ਜਾਰੀ ਰੱਖਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਲੌਗਇਨ ਕਰੋ',

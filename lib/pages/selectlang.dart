@@ -1,6 +1,8 @@
+import 'package:firstapp/services/localization_service.dart';
 import 'package:flutter/material.dart';
 
 class Selectlang extends StatelessWidget {
+  final lang = LocalizationService();
   @override
   Widget build(BuildContext context) {
     final List<MenuData> menu = [
@@ -39,6 +41,11 @@ class Selectlang extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0)),
                             child: InkWell(
+                              onTap: () {
+                                lang.changeLocale(menu[index].title);
+                                Navigator.pushReplacementNamed(
+                                    context, '/login');
+                              },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
