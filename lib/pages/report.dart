@@ -2,13 +2,26 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/services/auth.dart';
+import 'package:firstapp/services/localization_service.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:firstapp/widgets/appbar.dart';
 import 'package:get/get.dart';
+import 'package:translator/translator.dart';
 
-class report extends StatelessWidget {
+class report extends StatefulWidget {
+  final String imagePath;
+  final String? category;
+
+  bool isprevreport;
+  report({required this.imagePath, this.category, this.isprevreport = false});
+
+  @override
+  State<report> createState() => _reportState();
+}
+
+class _reportState extends State<report> {
   var remedy = {
     'Early blight':
         'Prune or stake plants to improve air circulation and reduce fungal problems.Make sure to disinfect your pruning shears (one part bleach to 4 parts water) after each cut.Keep the soil under plants clean and free of garden debris. Add a layer of organic compost to prevent the spores from splashing back up onto vegetation.',
@@ -52,15 +65,35 @@ class report extends StatelessWidget {
         'Tomato leaf mold is a foliar disease that is especially problematic in greenhouse and high tunnels. It is a pathogen that causes leaf lesions.',
   };
 
-  final String imagePath;
-  final String? category;
-
   final db = AuthService().db;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  bool isprevreport;
-  report({required this.imagePath, this.category, this.isprevreport = false});
-  final AuthService _aauth = AuthService();
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  var transdesc="";
+  var transremedy="";
+
+  
+  final AuthService _aauth = AuthService();
+  final lang=LocalizationService();
+  var lCode;
+
+  void translate() async{
+    final translator = GoogleTranslator();
+    var td = await translator
+      .translate(desc[widget.category]!, from: 'en', to: lCode);
+    var tr = await translator
+    .translate(remedy[widget.category]!, from: 'en', to: lCode);
+    setState(() {
+      transdesc=td.text;
+      transremedy=tr.text;
+    });
+  }
+  @override
+  void initState() {
+    lCode=lang.getLanguageCode(lang.getCurrentLang());
+    translate();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +142,7 @@ class report extends StatelessWidget {
                               fontFamily: 'Roboto'),
                           children: [
                             TextSpan(
-                              text: '$category',
+                              text: '${widget.category}',
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w400,
@@ -141,7 +174,7 @@ class report extends StatelessWidget {
                         ),
                       ),
                       ReadMoreText(
-                        '${desc[category]}',
+                        transdesc,
                         trimLines: 2,
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
@@ -179,7 +212,7 @@ class report extends StatelessWidget {
                         ),
                       ),
                       ReadMoreText(
-                        '${remedy[category]}',
+                        transremedy,
                         trimLines: 2,
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
@@ -198,7 +231,7 @@ class report extends StatelessWidget {
                       SizedBox(
                         height: 15.0,
                       ),
-                      !isprevreport
+                      !widget.isprevreport
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -215,11 +248,11 @@ class report extends StatelessWidget {
                                         .collection('reports')
                                         .doc()
                                         .set({
-                                      "Disease": category,
-                                      "Description": desc[category],
-                                      "Remedy": desc[category],
+                                      "Disease": widget.category,
+                                      "Description": desc[widget.category],
+                                      "Remedy": desc[widget.category],
                                       "Date": date,
-                                      "image": imagePath
+                                      "image": widget.imagePath
                                     });
                                     Navigator.pushReplacementNamed(
                                         context, '/previous_reports');
@@ -263,7 +296,7 @@ class report extends StatelessWidget {
                       width: 250.0,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: FileImage(File(imagePath)),
+                              image: FileImage(File(widget.imagePath)),
                               fit: BoxFit.cover),
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))),

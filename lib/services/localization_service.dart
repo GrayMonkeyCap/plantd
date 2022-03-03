@@ -28,6 +28,13 @@ class LocalizationService extends Translations {
     Locale('pa', 'IN'),
   ];
 
+  static final codes = [
+    'en',
+    'hi',
+    'ml',
+    'mr',
+    'pa'];
+
   // Keys and their translations
   // Translations are separated maps in `lang` file
   @override
@@ -55,6 +62,13 @@ class LocalizationService extends Translations {
       if (lang == langs[i]) return locales[i];
     }
     return Get.locale!;
+  }
+
+  String getLanguageCode(String lang) {
+    for (int i = 0; i < langs.length; i++) {
+      if (lang == langs[i]) return codes[i];
+    }
+    return 'en';
   }
 
   Locale getCurrentLocale() {

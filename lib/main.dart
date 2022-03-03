@@ -33,7 +33,7 @@ class App extends StatelessWidget {
         routes: {
           // ignore: prefer_const_constructors
           //'/': (context) => title(),
-          '/home': (context) => Selectlang(),
+          '/change_lang': (context) => Selectlang(),
           // '/home': (context) => home(),
           '/login': (context) => login(),
           //'/report': (context) => report(),

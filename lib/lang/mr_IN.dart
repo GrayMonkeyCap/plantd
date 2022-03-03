@@ -29,6 +29,7 @@ const Map<String, String> mrIN = {
   'scan_button': 'स्कॅन करा',
   'upload_button': 'आपण करू',
   'previous_report': 'मागील अहवाल पहा',
+  'change_lang':'भाषा बदला',
   'logout': 'लॉगआउट करा',
 
 // reports

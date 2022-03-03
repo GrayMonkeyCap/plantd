@@ -30,6 +30,7 @@ const Map<String, String> mlIN = {
   'scan_button': 'സ്കാൻ ചെയ്യുക',
   'upload_button': 'അപ്‌ലോഡ് ചെയ്യുക',
   'previous_report': 'മുൻ റിപ്പോർട്ട്',
+  'change_lang':'ഭാഷ മാറ്റുക',
   'logout': 'ലോഗ് ഔട്ട്',
 
 // reports

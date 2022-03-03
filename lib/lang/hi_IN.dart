@@ -27,6 +27,7 @@ const Map<String, String> hiIN = {
   'scan_button': 'स्कैन करें',
   'upload_button': 'अपलोड करें',
   'previous_report': 'पिछली रिपोर्ट',
+  'change_lang': 'भाषा बदलो',
   'logout': 'लॉगआउट',
 
 // reports

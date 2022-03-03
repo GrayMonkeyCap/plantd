@@ -1,7 +1,5 @@
 const Map<String, String> enUS = {
-  //title
-  'Tomato plant disease detection system':
-      'Tomato plant disease detection system',
+  
   //login page
   'Welcome to': 'Welcome to',
   'Please login to continue': 'PLEASE LOGIN TO CONTINUE',
@@ -30,6 +28,7 @@ const Map<String, String> enUS = {
   'scan_button': 'Scan',
   'upload_button': 'Upload',
   'previous_report': 'Previous Report',
+  'change_lang': 'Change Language',
   'logout': 'Logout',
 
 // reports

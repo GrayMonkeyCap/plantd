@@ -46,75 +46,78 @@ class _previous_reportState extends State<previous_report> {
             height: MediaQuery.of(context).size.height * 1,
             width: MediaQuery.of(context).size.width * 1,
             color: Colors.blueGrey[600],
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                  child: Text(
-                    'Previous Reports'.tr,
-                    style: TextStyle(
-                      fontFamily: 'salsa',
-                      fontSize: 25.0,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    child: Text(
+                      'Previous Reports'.tr,
+                      style: TextStyle(
+                        fontFamily: 'salsa',
+                        fontSize: 25.0,
+                      ),
                     ),
                   ),
-                ),
-                SingleChildScrollView(
-                  child: Column(
-                      children: reports.map((data) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => report(
-                            // Pass the automatically generated path to
-                            // the DisplayPictureScreen widget.
-                            imagePath: data["image"],
-                            category: data["Disease"], isprevreport: true,
-                          ),
-                        ));
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(15.0),
-                        padding: EdgeInsets.all(17.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              offset: const Offset(
-                                0,
-                                3,
-                              ),
-                              blurRadius: 5.0,
-                              spreadRadius: 0.2,
+                  SingleChildScrollView(
+                    child: Column(
+                        children: reports.map((data) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => report(
+                              // Pass the automatically generated path to
+                              // the DisplayPictureScreen widget.
+                              imagePath: data["image"],
+                              category: data["Disease"], isprevreport: true,
                             ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  '${data["Disease"]}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          ));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(15.0),
+                          padding: EdgeInsets.all(17.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                offset: const Offset(
+                                  0,
+                                  3,
                                 ),
-                                Text(
-                                  '${data["Date"]}',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                )
-                              ],
-                            ),
-                            Icon(Icons.info_outline_rounded)
-                          ],
+                                blurRadius: 5.0,
+                                spreadRadius: 0.2,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${data["Disease"]}',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    '${data["Date"]}',
+                                    style: TextStyle(fontWeight: FontWeight.w300),
+                                  )
+                                ],
+                              ),
+                              Icon(Icons.info_outline_rounded)
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList()),
-                ),
-              ],
+                      );
+                    }).toList()),
+                  ),
+                ],
+              ),
             )));
   }
 }

@@ -27,6 +27,7 @@ const Map<String, String> paIN = {
   'scan_button': 'ਸਕੈਨ ਬਟਨ',
   'upload_button': 'ਅੱਪਲੋਡ ਬਟਨ',
   'previous_report': 'ਪਿਛਲੀ ਰਿਪੋਰਟ',
+  'change_lang':'ਭਾਸ਼ਾ ਬਦਲੋ',
   'logout': 'ਲਾੱਗ ਆਊਟ, ਬਾਹਰ ਆਉਣਾ',
 
 // reports

@@ -45,7 +45,10 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
             onSelected: (value) async {
               if (value == '/previous_reports') {
                 Navigator.pushReplacementNamed(context, '/previous_reports');
-              } else {
+              }else if (value == '/change_lang') {
+                Navigator.pushNamed(context, '/change_lang');
+              }
+               else {
                 //Navigator.pushReplacementNamed(context, '/signup');
                 await _auth.signOut()
                 .then((value) => Navigator.pushReplacementNamed(context, '/'));
@@ -56,6 +59,9 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
                   PopupMenuItem(
                       child: Text("previous_report".tr),
                       value: '/previous_reports'),
+                  PopupMenuItem(
+                      child: Text("change_lang".tr),
+                      value: '/change_lang'),
                   PopupMenuItem(
                     child: Text("logout".tr),
                     value: '/login',
