@@ -27,8 +27,8 @@ class App extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         translations: LocalizationService(),
-        locale: Locale('ml', 'IN'),
-        fallbackLocale: Locale('hi', 'IN'),
+        locale: Locale('en', 'US'),
+        fallbackLocale: Locale('en', 'US'),
         routes: {
           // ignore: prefer_const_constructors
           //'/': (context) => title(),

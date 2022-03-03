@@ -17,7 +17,7 @@ const Map<String, String> mlIN = {
 //signup page
   'signup here': 'സൈൻ അപ്പ് ചെയ്യുക',
   'in just 1 step': 'വെറും 1 ഘട്ടത്തിൽ',
-  'Enter name': 'പേര് നൽകുക',
+  'Enter Name': 'പേര് നൽകുക',
   'Enter Email Id': 'ഇമെയിൽ ഐഡി നൽകുക',
   'Enter Phone no': 'ഫോൺ നമ്പർ നൽകുക',
   'Enter Password': 'പാസ്വേഡ് നല്കൂ',

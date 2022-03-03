@@ -14,7 +14,7 @@ const Map<String, String> paIN = {
 //signup page
   'signup here': 'ਇੱਥੇ ਸਾਈਨ ਅੱਪ ਕਰੋ',
   'in just 1 step': 'ਸਿਰਫ਼ 1 ਕਦਮ ਵਿੱਚ',
-  'Enter name': 'ਨਾਮ ਦਰਜ ਕਰੋ',
+  'Enter Name': 'ਨਾਮ ਦਰਜ ਕਰੋ',
   'Enter Email Id': 'ਈਮੇਲ ਆਈਡੀ ਦਰਜ ਕਰੋ',
   'Enter Phone no': 'ਫ਼ੋਨ ਨੰਬਰ ਦਰਜ ਕਰੋ',
   'Enter Password': 'ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ',

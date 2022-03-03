@@ -14,7 +14,7 @@ const Map<String, String> hiIN = {
 //signup page
   'signup here': 'साइनअप यहाँ',
   'in just 1 step': 'केवल 1 कदम में',
-  'Enter name': 'नाम दर्ज करें',
+  'Enter Name': 'नाम दर्ज करें',
   'Enter Email Id': 'ईमेल आईडी दर्ज करें',
   'Enter Phone no': 'फ़ोन नंबर दर्ज करें',
   'Enter Password': 'पासवर्ड दर्ज करें',

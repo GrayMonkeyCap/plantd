@@ -33,7 +33,7 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
           ),
           recognizer: TapGestureRecognizer()
             ..onTap = () {
-              Navigator.pushReplacementNamed(context, '/home');
+              Navigator.pushReplacementNamed(context, '/');
             },
         ),
       ),
@@ -47,8 +47,8 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.pushReplacementNamed(context, '/previous_reports');
               } else {
                 //Navigator.pushReplacementNamed(context, '/signup');
-                await _auth.signOut();
-                //.then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()),(route) => false));
+                await _auth.signOut()
+                .then((value) => Navigator.pushReplacementNamed(context, '/'));
 
               }
             },

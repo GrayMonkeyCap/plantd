@@ -16,7 +16,7 @@ const Map<String, String> mrIN = {
 //signup page
   'signup here': 'येथे साइन अप करा',
   'in just 1 step': 'फक्त 1 चरणात',
-  'Enter name': 'नाव प्रविष्ट करा',
+  'Enter Name': 'नाव प्रविष्ट करा',
   'Enter Email Id': 'ईमेल आयडी प्रविष्ट करा',
   'Enter Phone no': 'फोन नंबर टाका',
   'Enter Password': 'पासवर्ड टाका',

@@ -1,4 +1,4 @@
-const Map<String, String> hiIN = {
+const Map<String, String> enUS = {
   //title
   'Tomato plant disease detection system':
       'Tomato plant disease detection system',
@@ -7,7 +7,7 @@ const Map<String, String> hiIN = {
   'Please login to continue': 'PLEASE LOGIN TO CONTINUE',
   'Sign in with Google': 'Sign in with Google',
   'email/phone': 'Email / Phone',
-  'password': 'पासवर्ड',
+  'password': 'Password',
   'login': 'Login',
   'or': 'OR',
   'sign in guest': 'Sign in as Guest',
@@ -28,7 +28,7 @@ const Map<String, String> hiIN = {
   'appname': 'Plantd',
   'homepage_title': "Scan the leaf's image",
   'scan_button': 'Scan',
-  'upload_button': 'Uplaod',
+  'upload_button': 'Upload',
   'previous_report': 'Previous Report',
   'logout': 'Logout',
 

@@ -224,7 +224,7 @@ class _signupState extends State<signup> {
                                   setState(() =>
                                       error = 'Please enter a valid Email Id');
                                 }
-                                Navigator.pushReplacementNamed(context, '/');
+                                Navigator.pop(context);
                               }
                             },
                             child: Text(
@@ -288,8 +288,7 @@ class _signupState extends State<signup> {
                                       letterSpacing: 1.25),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      Navigator.pushReplacementNamed(
-                                          context, '/login');
+                                      Navigator.pop(context);
                                     },
                                 ),
                                 TextSpan(

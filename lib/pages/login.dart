@@ -1,4 +1,5 @@
 import 'package:firstapp/models/user.dart';
+import 'package:firstapp/pages/signup.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -259,7 +260,7 @@ class _loginState extends State<login> {
                                                       },
                                                       value: AuthService().user,
                                                       initialData: null,
-                                                      child: login())),
+                                                      child: signup())),
                                         );
                                       },
                                   ),

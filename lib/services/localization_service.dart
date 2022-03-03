@@ -1,3 +1,4 @@
+import 'package:firstapp/lang/en_US.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -31,6 +32,7 @@ class LocalizationService extends Translations {
   // Translations are separated maps in `lang` file
   @override
   Map<String, Map<String, String>> get keys => {
+        'en_US': enUS, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
         'hi_IN': hiIN, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
         'ml_IN': mlIN, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
         'mr_IN': mrIN, // lang/hi_IN.dart'ar_AE': arAE, // lang/ar_AE.dart
