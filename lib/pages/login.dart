@@ -1,9 +1,11 @@
 import 'package:firstapp/models/user.dart';
+import 'package:firstapp/pages/selectlang.dart';
 import 'package:firstapp/pages/signup.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 class login extends StatefulWidget {
@@ -18,6 +20,19 @@ class _loginState extends State<login> {
   String password = '';
   String error = '';
   bool _isObscure = true;
+  final box = GetStorage();
+  @override
+  void initState() {
+    if (box.read('lng') == null) {
+      Future(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Selectlang()));
+      });
+    }
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

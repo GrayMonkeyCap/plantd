@@ -68,8 +68,8 @@ class LocalizationService extends Translations {
       defaultLocale = locale;
     } else {
       defaultLocale = Locale(
-        'hi',
-        'IN',
+        'en',
+        'US',
       );
     }
 

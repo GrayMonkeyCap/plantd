@@ -22,12 +22,13 @@ void main() {
 }
 
 class App extends StatelessWidget {
+  final lang = LocalizationService();
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         translations: LocalizationService(),
-        locale: Locale('en', 'US'),
+        locale: lang.getCurrentLocale(),
         fallbackLocale: Locale('en', 'US'),
         routes: {
           // ignore: prefer_const_constructors

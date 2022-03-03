@@ -43,8 +43,7 @@ class Selectlang extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 lang.changeLocale(menu[index].title);
-                                Navigator.pushReplacementNamed(
-                                    context, '/login');
+                                Navigator.pop(context);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
