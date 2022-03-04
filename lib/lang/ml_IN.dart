@@ -41,6 +41,17 @@ const Map<String, String> mlIN = {
   'Save': 'സേവ്',
   'show less': 'കുറവ് കാണിക്കുക',
   'show more': 'കൂടുതൽ കാണിക്കുക',
+  //diseases
+  "Bacterial spot":"ബാക്റ്റീരിയൽ സ്പോട്",
+  "Early blight":"ഏർലി ബിലൈറ്",
+  "Late blight":"ലൈറ്റ് ബിലൈറ്",
+  "Leaf Mold":"ലീഫ് മോൾഡ്",
+  "Septoria leaf spot":"സെപ്റ്റോറിയ ലീഫ് സ്പോട്",
+  "Spider mites Two-spotted spider mite":"ടു സ്‌പോട്ടേഡ് സ്പൈഡർ മൈറ്",
+  "Target Spot":"ടാർഗറ്റ് സ്പോട്",
+  "Tomato Yellow Leaf Curl Virus":"എൽലോ ലീഫ് കൾ വൈറസ്",
+  "Tomato mosaic virus":"മൊസൈക് വൈറസ്",
+  "Healthy":"ആരോഗ്യകരം",
 
 //previous report
   'Previous Reports': 'മുൻ റിപ്പോർട്ടുകൾ',

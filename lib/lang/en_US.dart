@@ -49,7 +49,7 @@ const Map<String, String> enUS = {
   "Target Spot":"Target Spot",
   "Tomato Yellow Leaf Curl Virus":"Tomato Yellow Leaf Curl Virus",
   "Tomato mosaic virus":"Tomato mosaic virus",
-  "Healthy":"Healthy"
+  "Healthy":"Healthy",
 
 //previous report
   'Previous Reports': 'Previous Reports',
