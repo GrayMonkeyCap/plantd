@@ -29,7 +29,7 @@ const Map<String, String> mrIN = {
   'scan_button': 'स्कॅन करा',
   'upload_button': 'आपण करू',
   'previous_report': 'मागील अहवाल पहा',
-  'change_lang':'भाषा बदला',
+  'change_lang': 'भाषा बदला',
   'logout': 'लॉगआउट करा',
 
 // reports
@@ -40,6 +40,18 @@ const Map<String, String> mrIN = {
   'Save': 'जतन करा',
   'show less': 'कमी दाखवा',
   'show more': 'अजून दाखवा',
+  // Disease
+  "Bacterial spot": "बॅक्टरील स्पॉट",
+  "Early blight": "अर्ली बळ्यात",
+  "Late blight": "लेट बळ्यात",
+  "Leaf Mold": "लीफ् मोल्ड",
+  "Septoria leaf spot": "सेप्टोरिया लीफ स्पॉट",
+  "Spider mites Two-spotted spider mite":
+      "स्पायडर माइट्स दोन-स्पॉटेड स्पायडर माइट्स",
+  "Target Spot": "टार्गेट स्पॉट",
+  "Tomato Yellow Leaf Curl Virus": "टोमॅटो यलो लीफ कर्ल व्हायरस",
+  "Tomato mosaic virus": "टोमॅटो मोज़ेक व्हायरस",
+  "Healthy": "निरोगी",
 
 //previous report
   'Previous Reports': 'मागील अहवाल',
