@@ -1,5 +1,4 @@
 const Map<String, String> enUS = {
-  
   //login page
   'Welcome to': 'Welcome to',
   'Please login to continue': 'PLEASE LOGIN TO CONTINUE',
@@ -40,20 +39,18 @@ const Map<String, String> enUS = {
   'show less': 'show less',
   'show more': 'show more',
   // Diseases
-  "Bacterial spot":"Bacterial spot",
-  "Early blight":"Early blight",
-  "Late blight":"Late blight",
-  "Leaf Mold":"Leaf Mold",
-  "Septoria leaf spot":"Septoria leaf spot",
-  "Spider mites Two-spotted spider mite":"Spider mites Two-spotted spider mite",
-  "Target Spot":"Target Spot",
-  "Tomato Yellow Leaf Curl Virus":"Tomato Yellow Leaf Curl Virus",
-  "Tomato mosaic virus":"Tomato mosaic virus",
-  "Healthy":"Healthy"
+  "Bacterial spot": "Bacterial spot",
+  "Early blight": "Early blight",
+  "Late blight": "Late blight",
+  "Leaf Mold": "Leaf Mold",
+  "Septoria leaf spot": "Septoria leaf spot",
+  "Spider mites Two-spotted spider mite":
+      "Spider mites Two-spotted spider mite",
+  "Target Spot": "Target Spot",
+  "Tomato Yellow Leaf Curl Virus": "Tomato Yellow Leaf Curl Virus",
+  "Tomato mosaic virus": "Tomato mosaic virus",
+  "Healthy": "Healthy",
 
 //previous report
   'Previous Reports': 'Previous Reports',
 };
-
-
-
