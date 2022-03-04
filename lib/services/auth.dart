@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore db = FirebaseFirestore.instance;
+  String verificationID = "";
 
   // create user obj based on firebase
   MyUser? _userFromFirebaseUser(User? user) {
@@ -50,6 +51,28 @@ class AuthService {
       UserCredential result = await _auth.signInWithCredential(authCredential);
       User? user = result.user;
     }
+  }
+
+  void verifyPhone(phoneNumber) async {
+    _auth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        print("otp sent");
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        print(e.message);
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        verificationID = verificationId;
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
+
+  void verifyOTP(otp) async {
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationID, smsCode: otp);
+    print(credential);
   }
 
   //register

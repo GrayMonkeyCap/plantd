@@ -19,6 +19,7 @@ class _signupState extends State<signup> {
   String confirmpassword = '';
   String error = '';
   bool _isObscure = true;
+  String otp = "";
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +135,11 @@ class _signupState extends State<signup> {
                               setState(() => phone = val);
                             },
                             decoration: InputDecoration(
+                              suffixIcon: TextButton(
+                                  onPressed: () {
+                                    _auth.verifyPhone(phone);
+                                  },
+                                  child: Text("Send OTP".tr)),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal),
                               ),
@@ -142,6 +148,34 @@ class _signupState extends State<signup> {
                                     BorderSide(width: 1, color: Colors.teal),
                               ),
                               labelText: 'Enter Phone no'.tr,
+                              labelStyle: TextStyle(color: Colors.teal),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 30.0),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: TextFormField(
+                            validator: (val) =>
+                                val!.isEmpty ? 'Enter OTP'.tr : null,
+                            onChanged: (val) {
+                              setState(() => otp = val);
+                            },
+                            decoration: InputDecoration(
+                              suffixIcon: TextButton(
+                                onPressed: () {
+                                  _auth.verifyOTP(otp);
+                                },
+                                child: Text("Verify".tr),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.teal),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.teal),
+                              ),
+                              labelText: 'Enter OTP'.tr,
                               labelStyle: TextStyle(color: Colors.teal),
                             ),
                           ),

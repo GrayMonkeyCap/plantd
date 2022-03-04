@@ -51,6 +51,7 @@ dependencies:
   tflite_flutter_helper: ^0.3.1
   readmore: ^2.1.0
   translator: ^0.1.7
+  flutter_otp: ^0.3.2
 
 dev_dependencies:
   flutter_test:
