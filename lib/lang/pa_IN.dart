@@ -27,7 +27,7 @@ const Map<String, String> paIN = {
   'scan_button': 'ਸਕੈਨ ਬਟਨ',
   'upload_button': 'ਅੱਪਲੋਡ ਬਟਨ',
   'previous_report': 'ਪਿਛਲੀ ਰਿਪੋਰਟ',
-  'change_lang':'ਭਾਸ਼ਾ ਬਦਲੋ',
+  'change_lang': 'ਭਾਸ਼ਾ ਬਦਲੋ',
   'logout': 'ਲਾੱਗ ਆਊਟ, ਬਾਹਰ ਆਉਣਾ',
 
 // reports
@@ -38,6 +38,18 @@ const Map<String, String> paIN = {
   'Save': 'ਸੇਵ ਕਰੋ',
   'show less': 'ਘੱਟ ਦਿਖਾਓ',
   'show more': 'ਹੋਰ ਦਿਖਾਓ',
+
+// Diseases
+  "Bacterial spot": "ਸੈਪਟੋਰੀਆ ਸਪਾਟ",
+  "Early blight": "ਅਰ੍ਲੀ ਬਲੀਘਟ",
+  "Late blight": "ਲਾਟ ਬਲੀਘਟ",
+  "Leaf Mold": "ਲੈਫ ਮੋਲਡ",
+  "Septoria leaf spot": "ਸੈਪਟੋਰੀਆ ਲੈਫ ਸਪਾਟ",
+  "Spider mites Two-spotted spider mite": "ਟੂ ਸਪੋਟਟੇਡ ਸਪਾਈਡਰ ਮਿਟੇ",
+  "Target Spot": "ਟਾਰਗੇਟ ਸਪਾਟ",
+  "Tomato Yellow Leaf Curl Virus": "ਟੋਮੈਟੋ ਏਲ੍ਲੋ ਲੈਫ ਕੁਰਲ ਵਾਇਰਸ",
+  "Tomato mosaic virus": "ਟੋਮੈਟੋ ਮਿਉਜ਼ਿਕ ਵਾਇਰਸ",
+  "Healthy": "ਸਿਹਤਮੰਦ",
 
 //previous report
   'Previous Reports': 'ਪਿਛਲੀਆਂ ਰਿਪੋਰਟਾਂ',
