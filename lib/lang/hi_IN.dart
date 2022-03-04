@@ -38,6 +38,18 @@ const Map<String, String> hiIN = {
   'Save': 'जामा कारे',
   'show less': 'कम दिखाना',
   'show more': 'अधिक दिखाएँ',
+//Diseases
+  "Bacterial spot": "बैक्टेरियल स्पॉट",
+  "Early blight": "अर्ली ब्लाइट",
+  "Late blight": "लेट ब्लाइट",
+  "Leaf Mold": "लीफ मोल्ड",
+  "Septoria leaf spot": "सेप्टोरिया लीफ स्पॉट",
+  "Spider mites Two-spotted spider mite":
+      "स्पाइडर माइट्स टू-स्पॉटेड स्पाइडर माइट्",
+  "Target Spot": "टारगेट स्पॉट",
+  "Tomato Yellow Leaf Curl Virus": "टोमाएटो एलो लीफ कर्ल वायरस",
+  "Tomato mosaic virus": "टोमाएटो मोसैइक वायरस",
+  "Healthy": "स्वस्थ",
 
 //previous report
   'Previous Reports': 'पिछली रिपोर्ट',
