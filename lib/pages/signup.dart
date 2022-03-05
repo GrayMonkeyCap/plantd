@@ -1,3 +1,4 @@
+import 'package:firstapp/services/opt2.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapp/services/auth.dart';
@@ -12,6 +13,8 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   final AuthService _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
+  //final _otp = FlutterOtp();
+  final _otp2 = Otp2();
   String name = '';
   String email = '';
   String phone = '';
@@ -137,7 +140,7 @@ class _signupState extends State<signup> {
                             decoration: InputDecoration(
                               suffixIcon: TextButton(
                                   onPressed: () {
-                                    _auth.verifyPhone(phone);
+                                    _otp2.verifyPhone(phone);
                                   },
                                   child: Text("Send OTP".tr)),
                               enabledBorder: OutlineInputBorder(
