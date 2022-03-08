@@ -70,9 +70,7 @@ class _selectPlantsState extends State<selectPlants> {
                           validator: (val) =>
                               val!.isEmpty ? 'Enter Number'.tr : null,
                           onChanged: (val) {
-                            if(val!=''){
                             setState(() => numberofplants = int.parse(val));
-                            }
                           },
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
@@ -99,14 +97,18 @@ class _selectPlantsState extends State<selectPlants> {
                                 final User? user = _auth.currentUser;
                                     final uid = user!.uid;
 
-                                      
-                                    for(var i=1;i<=numberofplants;i++){
-                                      // var docRef=collection.doc();
-                                      final results = await db
+                                      var collection= db
                                         .collection('users')
                                         .doc(uid)
-                                        .collection('plantFolders').add({
-                                          'Number':i
+                                        .collection('plantFolders')
+                                    
+                                        ;
+                                    for(var i=1;i<=numberofplants;i++){
+                                      var docRef=collection.doc();
+                                      final results = await docRef
+                                        .set({
+                                          'Number':i,
+                                          'id':docRef.id
                                       
                                     });
                                     }
