@@ -16,14 +16,14 @@ class _titleState extends State<title> {
   void initState() {
     // precacheImage(theImage, context);
     super.initState();
-    Timer(
-      const Duration(seconds: 10),
-      () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (BuildContext context) => login(),
-        ),
-      ),
-    );
+    // Timer(
+    //   const Duration(seconds: 10),
+    //   () => Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(
+    //       builder: (BuildContext context) => login(),
+    //     ),
+    //   ),
+    // );
   }
 
   @override

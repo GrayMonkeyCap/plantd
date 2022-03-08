@@ -1,4 +1,5 @@
 import 'package:firstapp/pages/selectlang.dart';
+import 'package:firstapp/pages/selectplants.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapp/pages/home.dart';
 import 'package:firstapp/pages/previous_reports.dart';
@@ -19,9 +20,9 @@ class Wrapper extends StatelessWidget {
     print("USER YAHA HAI ${user?.uid}");
 
     if (user?.uid == null) {
-      return signup();
+      return login();
     } else {
-      return home();
+      return selectPlants();
     }
   }
 }
