@@ -19,7 +19,7 @@ class Wrapper extends StatelessWidget {
     print("USER YAHA HAI ${user?.uid}");
 
     if (user?.uid == null) {
-      return signup();
+      return login();
     } else {
       return home();
     }

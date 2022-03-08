@@ -5,6 +5,7 @@ import 'package:firstapp/services/auth.dart';
 import 'package:firstapp/services/localization_service.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:firstapp/widgets/appbar.dart';
 import 'package:get/get.dart';
@@ -69,33 +70,68 @@ class _reportState extends State<report> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  var transdesc="";
-  var transremedy="";
+  var transdesc = "";
+  var transremedy = "";
 
-  
   final AuthService _aauth = AuthService();
-  final lang=LocalizationService();
+  final lang = LocalizationService();
   var lCode;
+  final FlutterTts flutterTts = FlutterTts();
 
-  void translate() async{
+  void translate() async {
     final translator = GoogleTranslator();
-    var td = await translator
-      .translate(desc[widget.category]!, from: 'en', to: lCode);
-    var tr = await translator
-    .translate(remedy[widget.category]!, from: 'en', to: lCode);
+    var td = await translator.translate(desc[widget.category]!,
+        from: 'en', to: lCode);
+    var tr = await translator.translate(remedy[widget.category]!,
+        from: 'en', to: lCode);
     setState(() {
-      transdesc=td.text;
-      transremedy=tr.text;
+      transdesc = td.text;
+      transremedy = tr.text;
     });
   }
+
   @override
   void initState() {
-    lCode=lang.getLanguageCode(lang.getCurrentLang());
+    lCode = lang.getLanguageCode(lang.getCurrentLang());
     translate();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
+    Future speakdesc() async {
+      if (lCode == "hi") {
+        await flutterTts.setLanguage("hi-IN");
+      }
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setPitch(1);
+      // print(await flutterTts.getVoices);
+      await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
+      await flutterTts.speak(transdesc);
+    }
+
+    Future speakremedy() async {
+      if (lCode == "hi") {
+        await flutterTts.setLanguage("hi-IN");
+      }
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setPitch(1);
+      // print(await flutterTts.getVoices);
+      await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
+      await flutterTts.speak(transremedy);
+    }
+
+    Future speakdisease() async {
+      if (lCode == "hi") {
+        await flutterTts.setLanguage("hi-IN");
+      }
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setPitch(1);
+      // print(await flutterTts.getVoices);
+      await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
+      await flutterTts.speak('${widget.category}'.tr);
+    }
+
     return Scaffold(
       appBar: common_nav_bar(appBar: AppBar(), auth: _aauth),
       // body: const Center(
@@ -132,46 +168,72 @@ class _reportState extends State<report> {
                       SizedBox(
                         height: 50.0,
                       ),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Disease:'.tr,
-                          style: TextStyle(
-                              fontSize: 23,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Roboto'),
-                          children: [
-                            TextSpan(
-                              text: '${widget.category}',
+                      Row(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: 'Disease:'.tr,
                               style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
+                                  fontSize: 23,
                                   color: Colors.black,
+                                  fontWeight: FontWeight.w600,
                                   fontFamily: 'Roboto'),
+                              children: [
+                                TextSpan(
+                                  text: '${widget.category}'.tr,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black,
+                                      fontFamily: 'Roboto'),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.volume_up_rounded,
+                              size: 25.0,
+                            ),
+                            onPressed: () {
+                              speakdisease();
+                            },
+                          )
+                        ],
                       ),
                       SizedBox(height: 15.0),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Description:'.tr,
-                          style: TextStyle(
-                              fontSize: 23,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Roboto'),
-                          children: <TextSpan>[
-                            // TextSpan(
-                            //   text: '${desc[category]}',
-                            //   style: TextStyle(
-                            //       fontSize: 20,
-                            //       fontWeight: FontWeight.w400,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Roboto'),
-                            // ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: 'Description:'.tr,
+                              style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Roboto'),
+                              children: <TextSpan>[
+                                // TextSpan(
+                                //   text: '${desc[category]}',
+                                //   style: TextStyle(
+                                //       fontSize: 20,
+                                //       fontWeight: FontWeight.w400,
+                                //       color: Colors.black,
+                                //       fontFamily: 'Roboto'),
+                                // ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.volume_up_rounded,
+                              size: 25.0,
+                            ),
+                            onPressed: () {
+                              speakdesc();
+                            },
+                          )
+                        ],
                       ),
                       ReadMoreText(
                         transdesc,
@@ -191,25 +253,38 @@ class _reportState extends State<report> {
                             color: Colors.blue),
                       ),
                       SizedBox(height: 15.0),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Remedy:'.tr,
-                          style: TextStyle(
-                              fontSize: 23,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Roboto'),
-                          children: <TextSpan>[
-                            // TextSpan(
-                            //   text: '${remedy[category]}',
-                            //   style: TextStyle(
-                            //       fontSize: 20,
-                            //       color: Colors.black,
-                            //       fontWeight: FontWeight.w400,
-                            //       fontFamily: 'Roboto'),
-                            // ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: 'Remedy:'.tr,
+                              style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Roboto'),
+                              children: <TextSpan>[
+                                // TextSpan(
+                                //   text: '${remedy[category]}',
+                                //   style: TextStyle(
+                                //       fontSize: 20,
+                                //       color: Colors.black,
+                                //       fontWeight: FontWeight.w400,
+                                //       fontFamily: 'Roboto'),
+                                // ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.volume_up_rounded,
+                              size: 25.0,
+                            ),
+                            onPressed: () {
+                              speakremedy();
+                            },
+                          )
+                        ],
                       ),
                       ReadMoreText(
                         transremedy,
