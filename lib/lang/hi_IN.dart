@@ -22,19 +22,19 @@ const Map<String, String> hiIN = {
   'Already have an account?': 'पहले से ही एक खाता है?',
 
 //home page
-  'appname': 'प्लांटेड',
-  'homepage_title': 'पत्ती की छवि को स्कैन करें',
+  'appname': 'प्लांटेड ',
+  'homepage_title': 'पत्ती की छवि को स्कैन करें ',
   'scan_button': 'स्कैन करें',
   'upload_button': 'अपलोड करें',
   'previous_report': 'पिछली रिपोर्ट',
   'change_lang': 'भाषा बदलो',
-  'logout': 'लॉगआउट',
+  'logout': 'लॉगआउट ',
 
 // reports
-  'Report Generated': 'रिपोर्ट बनाई गई',
-  'Disease:': 'रोग',
-  'Description:': 'वर्णन',
-  'Remedy:': 'उपाय',
+  'Report Generated': 'रिपोर्ट बनाई गई ',
+  'Disease:': 'रोग ',
+  'Description:': 'वर्णन ',
+  'Remedy:': 'उपाय ',
   'Save': 'जामा कारे',
   'show less': 'कम दिखाना',
   'show more': 'अधिक दिखाएँ',

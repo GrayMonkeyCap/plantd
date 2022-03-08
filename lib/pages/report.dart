@@ -102,12 +102,17 @@ class _reportState extends State<report> {
     Future speakdesc() async {
       if (lCode == "hi") {
         await flutterTts.setLanguage("hi-IN");
+        await flutterTts.setPitch(1);
+        // print(await flutterTts.getVoices);
+        await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
+        await flutterTts.speak(transdesc);
+      } else {
+        await flutterTts.setLanguage("en-US");
+        await flutterTts.setPitch(1);
+        // print(await flutterTts.getVoices);
+        await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
+        await flutterTts.speak(transdesc);
       }
-      await flutterTts.setLanguage("en-US");
-      await flutterTts.setPitch(1);
-      // print(await flutterTts.getVoices);
-      await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
-      await flutterTts.speak(transdesc);
     }
 
     Future speakremedy() async {

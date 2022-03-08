@@ -24,7 +24,7 @@ const Map<String, String> mrIN = {
   'Already have an account?': 'आधीपासूनच एक खाते आहे?',
 
 //home page
-  'appname': 'प्लांटेड',
+  'appname': 'प्लांटेड ',
   'homepage_title': 'कृपया पान स्कॅन करा',
   'scan_button': 'स्कॅन करा',
   'upload_button': 'आपण करू',
@@ -34,9 +34,9 @@ const Map<String, String> mrIN = {
 
 // reports
   'Report Generated': 'अहवाल तयार',
-  'Disease:': 'आजार',
-  'Description:': 'वर्णन',
-  'Remedy:': 'उपाय',
+  'Disease:': 'आजार ',
+  'Description:': 'वर्णन ',
+  'Remedy:': 'उपाय ',
   'Save': 'जतन करा',
   'show less': 'कमी दाखवा',
   'show more': 'अजून दाखवा',
