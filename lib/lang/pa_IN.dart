@@ -1,6 +1,6 @@
 const Map<String, String> paIN = {
   //login page
-  'Welcome to': 'ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ',
+  'Welcome to': 'ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ ',
   'Please login to continue': 'ਜਾਰੀ ਰੱਖਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਲੌਗਇਨ ਕਰੋ',
   'Sign in with Google': 'Google ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ',
   'email/phone': 'ਈ - ਮੇਲ / ਫ਼ੋਨ',
@@ -8,7 +8,7 @@ const Map<String, String> paIN = {
   'login': 'ਲਾਗਿਨ',
   'or': 'ਜਾਂ',
   'sign in guest': 'ਮਹਿਮਾਨ ਸਾਈਨ ਇਨ ਕਰੋ',
-  'Dont have an account yet?': 'ਅਜੇ ਤੱਕ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਹੈ?',
+  'Dont have an account yet?': 'ਅਜੇ ਤੱਕ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਹੈ? ',
   'signup': 'ਸਾਇਨ ਅਪ',
   'here': 'ਇਥੇ',
 //signup page
@@ -32,9 +32,9 @@ const Map<String, String> paIN = {
 
 // reports
   'Report Generated': 'ਰਿਪੋਰਟ ਤਿਆਰ ਕੀਤੀ ਗਈ',
-  'Disease:': 'ਰੋਗ',
-  'Description:': 'ਵਰਣਨ',
-  'Remedy:': 'ਉਪਾਅ',
+  'Disease:': 'ਰੋਗ ',
+  'Description:': 'ਵਰਣਨ ',
+  'Remedy:': 'ਉਪਾਅ ',
   'Save': 'ਸੇਵ ਕਰੋ',
   'show less': 'ਘੱਟ ਦਿਖਾਓ',
   'show more': 'ਹੋਰ ਦਿਖਾਓ',

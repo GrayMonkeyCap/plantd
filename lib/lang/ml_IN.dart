@@ -1,9 +1,8 @@
 const Map<String, String> mlIN = {
   //title
-  'Tomato plant disease detection system':
-      '',
+  'Tomato plant disease detection system': '',
   //login page
-  'Welcome to': 'സ്വാഗതം',
+  'Welcome to': 'സ്വാഗതം ',
   'Please login to continue': 'തുടരാൻ ദയവായി ലോഗിൻ ചെയ്യുക',
   'Sign in with Google': 'Google ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യുക',
   'email/phone': 'ഇമെയിൽ/ഫോൺ',
@@ -25,33 +24,33 @@ const Map<String, String> mlIN = {
   'Already have an account?': 'ഇതിനകം ഒരു അക്കൗണ്ട് ഉണ്ടോ?',
 
 //home page
-  'appname': 'പ്ലാന്റേഡ്',
+  'appname': 'പ്ലാന്റേഡ് ',
   'homepage_title': 'ഇലയുടെ ചിത്രം സ്കാൻ ചെയ്യുക',
   'scan_button': 'സ്കാൻ ചെയ്യുക',
   'upload_button': 'അപ്‌ലോഡ് ചെയ്യുക',
   'previous_report': 'മുൻ റിപ്പോർട്ട്',
-  'change_lang':'ഭാഷ മാറ്റുക',
+  'change_lang': 'ഭാഷ മാറ്റുക',
   'logout': 'ലോഗ് ഔട്ട്',
 
 // reports
   'Report Generated': 'റിപ്പോർട്ട് ',
-  'Disease:': 'രോഗം',
-  'Description:': 'വിവരണം',
-  'Remedy:': 'പ്രതിവിധി',
-  'Save': 'സേവ്',
+  'Disease:': 'രോഗം ',
+  'Description:': 'വിവരണം ',
+  'Remedy:': 'പ്രതിവിധി ',
+  'Save': 'സേവ് ',
   'show less': 'കുറവ് കാണിക്കുക',
   'show more': 'കൂടുതൽ കാണിക്കുക',
   //diseases
-  "Bacterial spot":"ബാക്റ്റീരിയൽ സ്പോട്",
-  "Early blight":"ഏർലി ബിലൈറ്",
-  "Late blight":"ലൈറ്റ് ബിലൈറ്",
-  "Leaf Mold":"ലീഫ് മോൾഡ്",
-  "Septoria leaf spot":"സെപ്റ്റോറിയ ലീഫ് സ്പോട്",
-  "Spider mites Two-spotted spider mite":"ടു സ്‌പോട്ടേഡ് സ്പൈഡർ മൈറ്",
-  "Target Spot":"ടാർഗറ്റ് സ്പോട്",
-  "Tomato Yellow Leaf Curl Virus":"എൽലോ ലീഫ് കൾ വൈറസ്",
-  "Tomato mosaic virus":"മൊസൈക് വൈറസ്",
-  "Healthy":"ആരോഗ്യകരം",
+  "Bacterial spot": "ബാക്റ്റീരിയൽ സ്പോട്",
+  "Early blight": "ഏർലി ബിലൈറ്",
+  "Late blight": "ലൈറ്റ് ബിലൈറ്",
+  "Leaf Mold": "ലീഫ് മോൾഡ്",
+  "Septoria leaf spot": "സെപ്റ്റോറിയ ലീഫ് സ്പോട്",
+  "Spider mites Two-spotted spider mite": "ടു സ്‌പോട്ടേഡ് സ്പൈഡർ മൈറ്",
+  "Target Spot": "ടാർഗറ്റ് സ്പോട്",
+  "Tomato Yellow Leaf Curl Virus": "എൽലോ ലീഫ് കൾ വൈറസ്",
+  "Tomato mosaic virus": "മൊസൈക് വൈറസ്",
+  "Healthy": "ആരോഗ്യകരം",
 
 //previous report
   'Previous Reports': 'മുൻ റിപ്പോർട്ടുകൾ',

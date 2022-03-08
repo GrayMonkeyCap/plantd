@@ -1,9 +1,8 @@
 const Map<String, String> enUS = {
-  
   //login page
-  'Welcome to': 'Welcome to',
-  'Please login to continue': 'PLEASE LOGIN TO CONTINUE',
-  'Sign in with Google': 'Sign in with Google',
+  'Welcome to': 'Welcome to ',
+  'Please login to continue': 'PLEASE LOGIN TO CONTINUE ',
+  'Sign in with Google': 'Sign in with Google ',
   'email/phone': 'Email / Phone',
   'password': 'Password',
   'login': 'Login',
@@ -13,8 +12,8 @@ const Map<String, String> enUS = {
   'signup': 'Signup',
   'here': 'Here',
 //signup page
-  'signup here': 'Signup Here',
-  'in just 1 step': 'IN JUST 1 STEP',
+  'signup here': 'Signup Here ',
+  'in just 1 step': 'IN JUST 1 STEP ',
   'Enter name': 'Enter name',
   'Enter Email Id': 'Enter Email Id',
   'Enter Phone no': 'Enter Phone no',
@@ -32,28 +31,26 @@ const Map<String, String> enUS = {
   'logout': 'Logout',
 
 // reports
-  'Report Generated': 'Report Generated',
-  'Disease': 'Disease',
+  'Report Generated': 'Report Generated ',
+  'Disease': 'Disease ',
   'Description': 'Description',
-  'Remedy': 'Remedy',
-  'Save': 'Save',
+  'Remedy': 'Remedy ',
+  'Save': 'Save ',
   'show less': 'show less',
   'show more': 'show more',
   // Diseases
-  "Bacterial spot":"Bacterial spot",
-  "Early blight":"Early blight",
-  "Late blight":"Late blight",
-  "Leaf Mold":"Leaf Mold",
-  "Septoria leaf spot":"Septoria leaf spot",
-  "Spider mites Two-spotted spider mite":"Spider mites Two-spotted spider mite",
-  "Target Spot":"Target Spot",
-  "Tomato Yellow Leaf Curl Virus":"Tomato Yellow Leaf Curl Virus",
-  "Tomato mosaic virus":"Tomato mosaic virus",
-  "Healthy":"Healthy", 
+  "Bacterial spot": "Bacterial spot",
+  "Early blight": "Early blight",
+  "Late blight": "Late blight",
+  "Leaf Mold": "Leaf Mold",
+  "Septoria leaf spot": "Septoria leaf spot",
+  "Spider mites Two-spotted spider mite":
+      "Spider mites Two-spotted spider mite",
+  "Target Spot": "Target Spot",
+  "Tomato Yellow Leaf Curl Virus": "Tomato Yellow Leaf Curl Virus",
+  "Tomato mosaic virus": "Tomato mosaic virus",
+  "Healthy": "Healthy",
 
 //previous report
   'Previous Reports': 'Previous Reports',
 };
-
-
-
