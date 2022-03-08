@@ -173,143 +173,216 @@ class _reportState extends State<report> {
                       SizedBox(
                         height: 50.0,
                       ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              text: 'Disease:'.tr,
-                              style: TextStyle(
-                                  fontSize: 23,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Roboto'),
+                      Container(
+                        margin: EdgeInsets.all(15.0),
+                        padding: EdgeInsets.all(17.0),
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Colors.blue[100],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: const Offset(
+                                0,
+                                3,
+                              ),
+                              blurRadius: 5.0,
+                              spreadRadius: 0.2,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                TextSpan(
-                                  text: '${widget.category}'.tr,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black,
-                                      fontFamily: 'Roboto'),
+                                RichText(
+                                  text: TextSpan(
+                                    text: 'Disease:'.tr,
+                                    style: TextStyle(
+                                        fontSize: 23,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Roboto'),
+                                  ),
                                 ),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.volume_up_rounded,
+                                    size: 25.0,
+                                  ),
+                                  onPressed: () {
+                                    speakdisease();
+                                  },
+                                )
                               ],
                             ),
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.volume_up_rounded,
-                              size: 25.0,
-                            ),
-                            onPressed: () {
-                              speakdisease();
-                            },
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 15.0),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              text: 'Description:'.tr,
+                            Text(
+                              '${widget.category}'.tr,
                               style: TextStyle(
-                                  fontSize: 23,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.black,
-                                  fontWeight: FontWeight.w600,
                                   fontFamily: 'Roboto'),
-                              children: <TextSpan>[
-                                // TextSpan(
-                                //   text: '${desc[category]}',
-                                //   style: TextStyle(
-                                //       fontSize: 20,
-                                //       fontWeight: FontWeight.w400,
-                                //       color: Colors.black,
-                                //       fontFamily: 'Roboto'),
-                                // ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                          margin: EdgeInsets.all(15.0),
+                          padding: EdgeInsets.all(17.0),
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Colors.blue[100],
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                offset: const Offset(
+                                  0,
+                                  3,
+                                ),
+                                blurRadius: 5.0,
+                                spreadRadius: 0.2,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: 'Description:'.tr,
+                                      style: TextStyle(
+                                          fontSize: 23,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Roboto'),
+                                      children: <TextSpan>[
+                                        // TextSpan(
+                                        //   text: '${desc[category]}',
+                                        //   style: TextStyle(
+                                        //       fontSize: 20,
+                                        //       fontWeight: FontWeight.w400,
+                                        //       color: Colors.black,
+                                        //       fontFamily: 'Roboto'),
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.volume_up_rounded,
+                                      size: 25.0,
+                                    ),
+                                    onPressed: () {
+                                      speakdesc();
+                                    },
+                                  )
+                                ],
+                              ),
+                              ReadMoreText(
+                                transdesc,
+                                trimLines: 2,
+                                colorClickableText: Colors.pink,
+                                trimMode: TrimMode.Line,
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                                trimCollapsedText: 'show more'.tr,
+                                trimExpandedText: 'show less'.tr,
+                                moreStyle: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue),
+                                lessStyle: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue),
+                              ),
+                            ],
+                          )),
+                      Container(
+                        margin: EdgeInsets.all(15.0),
+                        padding: EdgeInsets.all(17.0),
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Colors.blue[100],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: const Offset(
+                                0,
+                                3,
+                              ),
+                              blurRadius: 5.0,
+                              spreadRadius: 0.2,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    text: 'Remedy:'.tr,
+                                    style: TextStyle(
+                                        fontSize: 23,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Roboto'),
+                                    children: <TextSpan>[
+                                      // TextSpan(
+                                      //   text: '${remedy[category]}',
+                                      //   style: TextStyle(
+                                      //       fontSize: 20,
+                                      //       color: Colors.black,
+                                      //       fontWeight: FontWeight.w400,
+                                      //       fontFamily: 'Roboto'),
+                                      // ),
+                                    ],
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.volume_up_rounded,
+                                    size: 25.0,
+                                  ),
+                                  onPressed: () {
+                                    speakremedy();
+                                  },
+                                )
                               ],
                             ),
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.volume_up_rounded,
-                              size: 25.0,
+                            ReadMoreText(
+                              transremedy,
+                              trimLines: 2,
+                              colorClickableText: Colors.pink,
+                              trimMode: TrimMode.Line,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                              trimCollapsedText: 'show more'.tr,
+                              trimExpandedText: 'show less'.tr,
+                              moreStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
+                              lessStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
                             ),
-                            onPressed: () {
-                              speakdesc();
-                            },
-                          )
-                        ],
-                      ),
-                      ReadMoreText(
-                        transdesc,
-                        trimLines: 2,
-                        colorClickableText: Colors.pink,
-                        trimMode: TrimMode.Line,
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                        trimCollapsedText: 'show more'.tr,
-                        trimExpandedText: 'show less'.tr,
-                        moreStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                        lessStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                      ),
-                      SizedBox(height: 15.0),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              text: 'Remedy:'.tr,
-                              style: TextStyle(
-                                  fontSize: 23,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Roboto'),
-                              children: <TextSpan>[
-                                // TextSpan(
-                                //   text: '${remedy[category]}',
-                                //   style: TextStyle(
-                                //       fontSize: 20,
-                                //       color: Colors.black,
-                                //       fontWeight: FontWeight.w400,
-                                //       fontFamily: 'Roboto'),
-                                // ),
-                              ],
-                            ),
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.volume_up_rounded,
-                              size: 25.0,
-                            ),
-                            onPressed: () {
-                              speakremedy();
-                            },
-                          )
-                        ],
-                      ),
-                      ReadMoreText(
-                        transremedy,
-                        trimLines: 2,
-                        colorClickableText: Colors.pink,
-                        trimMode: TrimMode.Line,
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                        trimCollapsedText: 'show more'.tr,
-                        trimExpandedText: 'show less'.tr,
-                        moreStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                        lessStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                      ),
-                      SizedBox(
-                        height: 15.0,
+                          ],
+                        ),
                       ),
                       !widget.isprevreport
                           ? Row(
