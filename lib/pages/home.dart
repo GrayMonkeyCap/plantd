@@ -26,6 +26,7 @@ class _homeState extends State<home> {
   Image? _imageWidget;
   late bool scancamera;
   late List<String> labels;
+  bool isplantsel = false;
 
   String _predict() {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
@@ -127,8 +128,10 @@ class _homeState extends State<home> {
                               size: 170, color: Colors.blueGrey[900])),
                       FlatButton(
                         onPressed: () => {
-                          scancamera = true,
-                          getImage(scancamera)
+                          if (isplantsel == true)
+                            {scancamera = true, getImage(scancamera)}
+                          else
+                            {Navigator.pushNamed(context, '/selectPlants')}
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },
                         child: Text('scan_button'.tr),
@@ -145,8 +148,11 @@ class _homeState extends State<home> {
                       ),
                       FlatButton(
                         onPressed: () => {
-                          scancamera = false,
-                          getImage(scancamera)
+                          if (isplantsel == true)
+                            {scancamera = false, getImage(scancamera)}
+                          else
+                            {Navigator.pushNamed(context, '/selectPlants')}
+
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },
                         child: Text('upload_button'.tr),
