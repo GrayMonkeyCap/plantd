@@ -1,4 +1,5 @@
 import 'package:firstapp/pages/selectlang.dart';
+import 'package:firstapp/pages/selectplants.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:firstapp/services/localization_service.dart';
 import 'package:firstapp/wrapper.dart';
@@ -37,6 +38,7 @@ class App extends StatelessWidget {
           '/login': (context) => login(),
           //'/report': (context) => report(),
           '/previous_reports': (context) => previous_report(),
+          '/selectPlants': (context) => selectPlants(),
           '/signup': (context) => signup(),
           //'/scan': (context) => TakePictureScreen(camera: camera,),
         },

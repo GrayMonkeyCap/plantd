@@ -16,7 +16,6 @@ class _selectPlantsState extends State<selectPlants> {
   final db = AuthService().db;
   final _formkey = GlobalKey<FormState>();
   var numberofplants = 1;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,6 @@ class _selectPlantsState extends State<selectPlants> {
           color: Colors.teal[300],
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(
@@ -48,7 +46,6 @@ class _selectPlantsState extends State<selectPlants> {
                           style: TextStyle(color: Colors.white)),
                     ])),
               ),
-              
               Container(
                 // height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.9,
@@ -85,7 +82,6 @@ class _selectPlantsState extends State<selectPlants> {
                           ),
                         ),
                       ),
-                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -93,28 +89,21 @@ class _selectPlantsState extends State<selectPlants> {
                             margin:
                                 const EdgeInsets.only(top: 30.0, bottom: 30.0),
                             child: TextButton(
-                              onPressed: () async{
+                              onPressed: () async {
                                 final User? user = _auth.currentUser;
-                                    final uid = user!.uid;
+                                final uid = user!.uid;
 
-                                      var collection= db
-                                        .collection('users')
-                                        .doc(uid)
-                                        .collection('plantFolders')
-                                    
-                                        ;
-                                    for(var i=1;i<=numberofplants;i++){
-                                      var docRef=collection.doc();
-                                      final results = await docRef
-                                        .set({
-                                          'Number':i,
-                                          'id':docRef.id
-                                      
-                                    });
-                                    }
-                                    
-                                    Navigator.pushReplacementNamed(
-                                        context, '/');
+                                var collection = db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .collection('plantFolders');
+                                for (var i = 1; i <= numberofplants; i++) {
+                                  var docRef = collection.doc();
+                                  final results = await docRef
+                                      .set({'Number': i, 'id': docRef.id});
+                                }
+
+                                Navigator.pop(context);
                               },
                               child: Text(
                                 'Done'.tr,
@@ -124,7 +113,6 @@ class _selectPlantsState extends State<selectPlants> {
                                     letterSpacing: 1.25),
                               ),
                               style: ButtonStyle(
-
                                   backgroundColor: (MaterialStateProperty.all(
                                       Colors.teal[900])),
                                   shape: MaterialStateProperty.all<
@@ -138,7 +126,20 @@ class _selectPlantsState extends State<selectPlants> {
                             margin:
                                 const EdgeInsets.only(top: 30.0, bottom: 30.0),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                final User? user = _auth.currentUser;
+                                final uid = user!.uid;
+
+                                var collection = db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .collection('plantFolders');
+                                var docRef = collection.doc();
+                                final results = await docRef
+                                    .set({'Number': 1, 'id': docRef.id});
+
+                                Navigator.pop(context);
+                              },
                               child: Text(
                                 'Skip'.tr,
                                 style: TextStyle(
@@ -162,7 +163,6 @@ class _selectPlantsState extends State<selectPlants> {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),

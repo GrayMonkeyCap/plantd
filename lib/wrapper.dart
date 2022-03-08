@@ -1,3 +1,4 @@
+import 'package:firstapp/pages/plantList.dart';
 import 'package:firstapp/pages/selectlang.dart';
 import 'package:firstapp/pages/selectplants.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class Wrapper extends StatelessWidget {
     if (user?.uid == null) {
       return login();
     } else {
-      return selectPlants();
+      return plantList();
     }
   }
 }
