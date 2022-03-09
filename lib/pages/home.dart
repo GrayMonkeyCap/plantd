@@ -26,7 +26,7 @@ class _homeState extends State<home> {
   Image? _imageWidget;
   late bool scancamera;
   late List<String> labels;
-  bool isplantsel = false;
+  bool isplantsel = true;
 
   String _predict() {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;

@@ -9,7 +9,6 @@ import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/pages/signup.dart';
 import 'package:provider/provider.dart';
-// import 'package:provider/provider.dart';
 import 'package:firstapp/models/user.dart';
 
 // void main() => runApp(App());
@@ -23,7 +22,7 @@ class Wrapper extends StatelessWidget {
     if (user?.uid == null) {
       return login();
     } else {
-      return plantList();
+      return home();
     }
   }
 }

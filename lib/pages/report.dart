@@ -10,6 +10,7 @@ import 'package:readmore/readmore.dart';
 import 'package:firstapp/widgets/appbar.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 class report extends StatefulWidget {
   final String imagePath;
@@ -65,6 +66,7 @@ class _reportState extends State<report> {
     'Leaf Mold':
         'Tomato leaf mold is a foliar disease that is especially problematic in greenhouse and high tunnels. It is a pathogen that causes leaf lesions.',
   };
+  final pdf = pw.Document();
 
   final db = AuthService().db;
 
@@ -179,7 +181,7 @@ class _reportState extends State<report> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blue[100],
+                          color: Colors.teal[50],
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
@@ -236,7 +238,7 @@ class _reportState extends State<report> {
                           width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.blue[100],
+                            color: Colors.teal[50],
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black26,
@@ -313,7 +315,7 @@ class _reportState extends State<report> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blue[100],
+                          color: Colors.teal[50],
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
