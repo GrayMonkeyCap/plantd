@@ -1,6 +1,7 @@
 // import 'dart:html';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstapp/pages/pdfreport.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:firstapp/services/localization_service.dart';
 import 'package:flutter/gestures.dart';
@@ -10,7 +11,6 @@ import 'package:readmore/readmore.dart';
 import 'package:firstapp/widgets/appbar.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class report extends StatefulWidget {
   final String imagePath;
@@ -24,6 +24,7 @@ class report extends StatefulWidget {
 }
 
 class _reportState extends State<report> {
+  final Pdfreport pdf = Pdfreport();
   var remedy = {
     'Early blight':
         'Prune or stake plants to improve air circulation and reduce fungal problems.Make sure to disinfect your pruning shears (one part bleach to 4 parts water) after each cut.Keep the soil under plants clean and free of garden debris. Add a layer of organic compost to prevent the spores from splashing back up onto vegetation.',
@@ -66,7 +67,6 @@ class _reportState extends State<report> {
     'Leaf Mold':
         'Tomato leaf mold is a foliar disease that is especially problematic in greenhouse and high tunnels. It is a pathogen that causes leaf lesions.',
   };
-  final pdf = pw.Document();
 
   final db = AuthService().db;
 
@@ -155,13 +155,41 @@ class _reportState extends State<report> {
               children: <Widget>[
                 Container(
                     child: Padding(
-                      padding: const EdgeInsets.all(40.0),
-                      child: Text(
-                        'Report Generated'.tr,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600),
+                      padding: const EdgeInsets.only(
+                          left: 40.0, top: 40.0, right: 10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Report Generated'.tr,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () async {
+                                  var res = await pdf.generatepdf(
+                                      widget.category!.tr,
+                                      transdesc,
+                                      transremedy,
+                                      widget.imagePath);
+                                  print(res);
+                                },
+                                icon: Icon(Icons.download),
+                                color: Colors.white,
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.share),
+                                color: Colors.white,
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                     color: Colors.teal[800],
