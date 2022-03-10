@@ -173,9 +173,9 @@ class _reportState extends State<report> {
                               IconButton(
                                 onPressed: () async {
                                   var res = await pdf.generatepdf(
-                                      widget.category!.tr,
-                                      transdesc,
-                                      transremedy,
+                                      widget.category!,
+                                      desc[widget.category],
+                                      remedy[widget.category],
                                       widget.imagePath);
                                   print(res);
                                 },
