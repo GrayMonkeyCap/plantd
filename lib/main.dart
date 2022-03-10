@@ -1,3 +1,4 @@
+import 'package:firstapp/pages/plantList.dart';
 import 'package:firstapp/pages/selectlang.dart';
 import 'package:firstapp/pages/selectplants.dart';
 import 'package:firstapp/services/auth.dart';
@@ -37,7 +38,7 @@ class App extends StatelessWidget {
           // '/home': (context) => home(),
           '/login': (context) => login(),
           //'/report': (context) => report(),
-          '/previous_reports': (context) => previous_report(),
+          '/previous_reports': (context) => plantList(),
           '/selectPlants': (context) => selectPlants(),
           '/signup': (context) => signup(),
           //'/scan': (context) => TakePictureScreen(camera: camera,),
@@ -61,6 +62,7 @@ class App extends StatelessWidget {
                   value: AuthService().user,
                   child: Wrapper());
             }
+            
             return title();
 
             // // Otherwise, show something whilst waiting for initialization to complete

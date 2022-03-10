@@ -1,3 +1,4 @@
+import 'package:firstapp/pages/previous_reports.dart';
 import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:flutter/gestures.dart';
@@ -6,14 +7,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/widgets/appbar.dart';
 import 'package:get/get.dart';
 
+//
 class plantList extends StatefulWidget {
+  final save,remedy,disease,description,image,date;
+  plantList({this.save=false,this.remedy,this.disease,this.description,this.image,this.date});
   @override
-  State<plantList> createState() => _plantListState();
+  State<plantList> createState() => _plantListState(save:save,remedy:remedy,disease:disease,description:description,image:image,date:date);
 }
 
 class _plantListState extends State<plantList> {
   final db = AuthService().db;
-
+  var save,remedy,disease,description,image,date;
+  var saveandview= false;
+  _plantListState({this.save=false,
+  this.remedy,this.disease,this.description,this.image,this.date});
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final AuthService _aauth = AuthService();
 
@@ -63,15 +70,59 @@ class _plantListState extends State<plantList> {
                     child: Column(
                         children: plantFolder.map((data) {
                       return InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
+                        onTap: () async{
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (context) => report(
+                          //     // Pass the automatically generated path to
+                          //     // the DisplayPictureScreen widget.
+                          //     imagePath: data["image"],
+                          //     category: data["Disease"], isprevreport: true,
+                          //   ),
+                          // ));
+                          final User? user = _auth.currentUser;
+                          final uid = user!.uid;
+                          if(save){
+                            final collection = await db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .collection('plantFolders').doc(data["id"])
+                                    .collection('reports').add(
+                                      {
+                                        'Disease':disease,
+                                        'Remedy':remedy,
+                                        'Description':description,
+                                        'image':image,
+                                        'date':date
+                                      }
+                                    );
+                            Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => report(
                               // Pass the automatically generated path to
                               // the DisplayPictureScreen widget.
-                              imagePath: data["image"],
-                              category: data["Disease"], isprevreport: true,
+                              imagePath: image,
+                              category: disease
                             ),
                           ));
+                          }
+                          else{
+                            var reportList=[];
+                            var reports = await db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .collection('plantFolders').doc(data["id"])
+                                    .collection('reports').get();
+                            for (var queryDocumentSnapshot in reports.docs) {
+                              Map<String, dynamic> reportData = queryDocumentSnapshot.data();
+                              reportList.add(reportData);
+                            }
+                            await Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => previous_report(
+                                    // Pass the automatically generated path to
+                                    // the DisplayPictureScreen widget.
+                                    reports:reportList),
+                              ));
+                          }
                         },
                         child: Container(
                           margin: EdgeInsets.all(15.0),

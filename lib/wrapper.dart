@@ -23,7 +23,7 @@ class Wrapper extends StatelessWidget {
     if (user?.uid == null) {
       return login();
     } else {
-      return plantList();
+      return home();
     }
   }
 }

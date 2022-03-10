@@ -1,6 +1,7 @@
 // import 'dart:html';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstapp/pages/plantList.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:firstapp/services/localization_service.dart';
 import 'package:flutter/gestures.dart';
@@ -395,20 +396,30 @@ class _reportState extends State<report> {
                                     DateTime dateToday = new DateTime.now();
                                     String date =
                                         dateToday.toString().substring(0, 10);
-                                    final results = await db
-                                        .collection('users')
-                                        .doc(uid)
-                                        .collection('reports')
-                                        .doc()
-                                        .set({
-                                      "Disease": widget.category,
-                                      "Description": desc[widget.category],
-                                      "Remedy": desc[widget.category],
-                                      "Date": date,
-                                      "image": widget.imagePath
-                                    });
-                                    Navigator.pushReplacementNamed(
-                                        context, '/previous_reports');
+                                    // final results = await db
+                                    //     .collection('users')
+                                    //     .doc(uid)
+                                    //     .collection('reports')
+                                    //     .doc()
+                                    //     .set({
+                                    //   "Disease": widget.category,
+                                    //   "Description": desc[widget.category],
+                                    //   "Remedy": desc[widget.category],
+                                    //   "Date": date,
+                                    //   "image": widget.imagePath
+                                    // });
+                                    await Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => plantList(
+                                            // Pass the automatically generated path to
+                                            // the DisplayPictureScreen widget.
+                                            disease: widget.category,
+                                            description: desc[widget.category],
+                                            remedy: desc[widget.category],
+                                            date: date,
+                                            image: widget.imagePath,
+                                            save: true),
+                                      ));
                                   },
                                   child: Text(
                                     'save'.tr,

@@ -44,7 +44,7 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
             icon: Icon(Icons.menu),
             onSelected: (value) async {
               if (value == '/previous_reports') {
-                Navigator.pushReplacementNamed(context, '/previous_reports');
+                Navigator.pushNamed(context, '/previous_reports');
               }else if (value == '/change_lang') {
                 Navigator.pushNamed(context, '/change_lang');
               }

@@ -7,8 +7,10 @@ import 'package:firstapp/widgets/appbar.dart';
 import 'package:get/get.dart';
 
 class previous_report extends StatefulWidget {
+  final List reports;
+  previous_report({required this.reports});
   @override
-  State<previous_report> createState() => _previous_reportState();
+  State<previous_report> createState() => _previous_reportState(reports:reports);
 }
 
 class _previous_reportState extends State<previous_report> {
@@ -17,26 +19,26 @@ class _previous_reportState extends State<previous_report> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final AuthService _aauth = AuthService();
 
-  List reports = [];
-  fetch_report() async {
-    final User? user = _auth.currentUser;
-    final uid = user!.uid;
-    var collection = db.collection('users').doc(uid).collection('reports');
-    var querySnapshot = await collection.get();
-    List result = [];
-    for (var queryDocumentSnapshot in querySnapshot.docs) {
-      Map<String, dynamic> data = queryDocumentSnapshot.data();
-      result.add(data);
-    }
-    setState(() {
-      reports = result;
-    });
-  }
-
+  final List reports;
+  // fetch_report() async {
+  //   final User? user = _auth.currentUser;
+  //   final uid = user!.uid;
+  //   var collection = db.collection('users').doc(uid).collection('reports');
+  //   var querySnapshot = await collection.get();
+  //   List result = [];
+  //   for (var queryDocumentSnapshot in querySnapshot.docs) {
+  //     Map<String, dynamic> data = queryDocumentSnapshot.data();
+  //     result.add(data);
+  //   }
+  //   setState(() {
+  //     reports = result;
+  //   });
+  // }
+  _previous_reportState({required this.reports});
   @override
   void initState() {
     super.initState();
-    fetch_report();
+    //fetch_report();
   }
 
   Widget build(BuildContext context) {

@@ -26,7 +26,7 @@ class _homeState extends State<home> {
   Image? _imageWidget;
   late bool scancamera;
   late List<String> labels;
-  bool isplantsel = false;
+  bool isplantsel = true;
 
   String _predict() {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
@@ -43,13 +43,13 @@ class _homeState extends State<home> {
     labels = await FileUtil.loadLabels('assets/labels.txt');
     if (scancamera) {
       XFile? pickedFile = await picker.pickImage(source: ImageSource.camera);
-      setState(() async {
+      setState(() {
         _image = File(pickedFile!.path);
         _imageWidget = Image.file(_image!);
         var index = int.parse(_predict());
         category = labels[index];
 
-        await Navigator.of(context).push(
+         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => report(
                 // Pass the automatically generated path to
@@ -62,13 +62,13 @@ class _homeState extends State<home> {
       });
     } else {
       XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
-      setState(() async {
+      setState(() {
         _image = File(pickedFile!.path);
         _imageWidget = Image.file(_image!);
         var index = int.parse(_predict());
         category = labels[index];
 
-        await Navigator.of(context).push(
+         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => report(
                 // Pass the automatically generated path to
