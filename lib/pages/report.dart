@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/pages/plantList.dart';
+import 'package:firstapp/pages/pdfreport.dart';
 import 'package:firstapp/services/auth.dart';
 import 'package:firstapp/services/localization_service.dart';
 import 'package:flutter/gestures.dart';
@@ -24,6 +25,7 @@ class report extends StatefulWidget {
 }
 
 class _reportState extends State<report> {
+  final Pdfreport pdf = Pdfreport();
   var remedy = {
     'Early blight':
         'Prune or stake plants to improve air circulation and reduce fungal problems.Make sure to disinfect your pruning shears (one part bleach to 4 parts water) after each cut.Keep the soil under plants clean and free of garden debris. Add a layer of organic compost to prevent the spores from splashing back up onto vegetation.',
@@ -154,13 +156,41 @@ class _reportState extends State<report> {
               children: <Widget>[
                 Container(
                     child: Padding(
-                      padding: const EdgeInsets.all(40.0),
-                      child: Text(
-                        'Report Generated'.tr,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600),
+                      padding: const EdgeInsets.only(
+                          left: 40.0, top: 40.0, right: 10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Report Generated'.tr,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () async {
+                                  var res = await pdf.generatepdf(
+                                      widget.category!,
+                                      desc[widget.category],
+                                      remedy[widget.category],
+                                      widget.imagePath);
+                                  print(res);
+                                },
+                                icon: Icon(Icons.download),
+                                color: Colors.white,
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.share),
+                                color: Colors.white,
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                     color: Colors.teal[800],
@@ -180,7 +210,7 @@ class _reportState extends State<report> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blue[100],
+                          color: Colors.teal[50],
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
@@ -237,7 +267,7 @@ class _reportState extends State<report> {
                           width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.blue[100],
+                            color: Colors.teal[50],
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black26,
@@ -314,7 +344,7 @@ class _reportState extends State<report> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blue[100],
+                          color: Colors.teal[50],
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
