@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/services/auth.dart';
@@ -26,7 +27,12 @@ class _homeState extends State<home> {
   Image? _imageWidget;
   late bool scancamera;
   late List<String> labels;
-  bool isplantsel = true;
+
+  bool isplantsel = false;
+  final _authh = FirebaseAuth.instance;
+  final db = AuthService().db;
+  late User? user = _authh.currentUser;
+  late String uid = user!.uid;
 
   String _predict() {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
@@ -49,7 +55,7 @@ class _homeState extends State<home> {
         var index = int.parse(_predict());
         category = labels[index];
 
-         Navigator.of(context).push(
+        Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => report(
                 // Pass the automatically generated path to
@@ -68,7 +74,7 @@ class _homeState extends State<home> {
         var index = int.parse(_predict());
         category = labels[index];
 
-         Navigator.of(context).push(
+        Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => report(
                 // Pass the automatically generated path to
@@ -82,9 +88,27 @@ class _homeState extends State<home> {
     }
   }
 
+  Future<void> fetch_isplantselect() async {
+    final User? user = _authh.currentUser;
+    final uid = user!.uid;
+    var collection = db.collection('users');
+    //var querySnapshot = await collection.get();
+    var docSnapshot = await collection.doc(uid).get();
+    if (docSnapshot.exists) {
+      Map<String, dynamic> data = docSnapshot.data()!;
+
+      // You can then retrieve the value from the Map like this:
+      setState(() {
+        isplantsel = data['isplantselect'];
+        print(isplantsel);
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    //fetch_isplantselect();
     _classifier = ClassifierQuant();
   }
 
@@ -127,11 +151,14 @@ class _homeState extends State<home> {
                           child: Icon(Icons.qr_code_scanner,
                               size: 170, color: Colors.blueGrey[900])),
                       FlatButton(
-                        onPressed: () => {
-                          if (isplantsel == true)
-                            {scancamera = true, getImage(scancamera)}
-                          else
-                            {Navigator.pushNamed(context, '/selectPlants')}
+                        onPressed: () async {
+                          await fetch_isplantselect();
+                          if (isplantsel == true) {
+                            scancamera = true;
+                            getImage(scancamera);
+                          } else {
+                            Navigator.pushNamed(context, '/selectPlants');
+                          }
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },
                         child: Text('scan_button'.tr),
@@ -147,11 +174,14 @@ class _homeState extends State<home> {
                         ),
                       ),
                       FlatButton(
-                        onPressed: () => {
-                          if (isplantsel == true)
-                            {scancamera = false, getImage(scancamera)}
-                          else
-                            {Navigator.pushNamed(context, '/selectPlants')}
+                        onPressed: () async {
+                          await fetch_isplantselect();
+                          if (isplantsel == true) {
+                            scancamera = false;
+                            getImage(scancamera);
+                          } else {
+                            Navigator.pushNamed(context, '/selectPlants');
+                          }
 
                           //Navigator.pushReplacementNamed(context, '/scan')
                         },

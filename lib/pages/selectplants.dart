@@ -92,6 +92,10 @@ class _selectPlantsState extends State<selectPlants> {
                               onPressed: () async {
                                 final User? user = _auth.currentUser;
                                 final uid = user!.uid;
+                                var collection1 = db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .set({'isplantselect': true});
 
                                 var collection = db
                                     .collection('users')
@@ -129,7 +133,10 @@ class _selectPlantsState extends State<selectPlants> {
                               onPressed: () async {
                                 final User? user = _auth.currentUser;
                                 final uid = user!.uid;
-
+                                var collection1 = db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .set({'isplantselect': true});
                                 var collection = db
                                     .collection('users')
                                     .doc(uid)
