@@ -21,33 +21,37 @@ class Pdfreport {
       pw.Page(
         build: (pw.Context context) =>
             pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
+          pw.Text('Disease Report',
+              textAlign: pw.TextAlign.left,
+              style:
+                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 18)),
           pw.Center(
             child: pw.Image(image1),
           ),
           pw.Text('Disease:',
               textAlign: pw.TextAlign.left,
               style:
-                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 30)),
+                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 18)),
           pw.Text(diseasename,
               textAlign: pw.TextAlign.justify,
               style:
-                  pw.TextStyle(fontWeight: pw.FontWeight.normal, fontSize: 25)),
+                  pw.TextStyle(fontWeight: pw.FontWeight.normal, fontSize: 15)),
           pw.Text('Description:',
               textAlign: pw.TextAlign.left,
               style:
-                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 30)),
+                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 18)),
           pw.Text(description,
               textAlign: pw.TextAlign.justify,
               style:
-                  pw.TextStyle(fontWeight: pw.FontWeight.normal, fontSize: 25)),
+                  pw.TextStyle(fontWeight: pw.FontWeight.normal, fontSize: 15)),
           pw.Text('Remedy:',
               textAlign: pw.TextAlign.left,
               style:
-                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 30)),
+                  pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 18)),
           pw.Text(remedy,
               textAlign: pw.TextAlign.justify,
               style:
-                  pw.TextStyle(fontWeight: pw.FontWeight.normal, fontSize: 25)),
+                  pw.TextStyle(fontWeight: pw.FontWeight.normal, fontSize: 15)),
         ]),
       ),
     );
