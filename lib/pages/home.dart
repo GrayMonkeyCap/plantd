@@ -155,6 +155,61 @@ class _homeState extends State<home> {
                           await fetch_isplantselect();
                           if (isplantsel == true) {
                             scancamera = true;
+                            await showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  elevation: 16,
+                                  child: Container(
+                                    height: 350.0,
+                                    padding: EdgeInsets.all(40.0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 100.0,
+                                              child: Image.asset(
+                                                "assets/scanleaf.png",
+                                                height: 40.0,
+                                              ),
+                                            ),
+                                            Text(
+                                                " Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen."),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 100.0,
+                                              child: Image.asset(
+                                                "assets/blur.png",
+                                                height: 40.0,
+                                              ),
+                                            ),
+                                            Text(
+                                                "The image should not be blurr and should be clicked in good lighting."),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            // Image.asset("assets/"),
+                                            Text(
+                                                "Try to provide  a single leaf image"),
+                                          ],
+                                        ),
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(),
+                                            child: Text("OK"))
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
                             getImage(scancamera);
                           } else {
                             Navigator.pushNamed(context, '/selectPlants');
@@ -178,6 +233,31 @@ class _homeState extends State<home> {
                           await fetch_isplantselect();
                           if (isplantsel == true) {
                             scancamera = false;
+                            await showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  elevation: 16,
+                                  child: Container(
+                                    height: 350.0,
+                                    padding: EdgeInsets.all(40.0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text("1."),
+                                        Text("2."),
+                                        Text("3."),
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(),
+                                            child: Text("OK"))
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
                             getImage(scancamera);
                           } else {
                             Navigator.pushNamed(context, '/selectPlants');
