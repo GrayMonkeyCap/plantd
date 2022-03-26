@@ -12,6 +12,7 @@ import 'package:firstapp/pages/title.dart';
 import 'package:firstapp/pages/login.dart';
 import 'package:firstapp/pages/report.dart';
 import 'package:firstapp/pages/signup.dart';
+
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:firstapp/models/user.dart';
@@ -62,7 +63,7 @@ class App extends StatelessWidget {
                   value: AuthService().user,
                   child: Wrapper());
             }
-            
+
             return title();
 
             // // Otherwise, show something whilst waiting for initialization to complete

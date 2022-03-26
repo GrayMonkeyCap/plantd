@@ -164,40 +164,57 @@ class _homeState extends State<home> {
                                   elevation: 16,
                                   child: Container(
                                     height: 350.0,
-                                    padding: EdgeInsets.all(40.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         Row(
                                           children: [
                                             Container(
-                                              width: 100.0,
+                                              width: 50.0,
                                               child: Image.asset(
                                                 "assets/scanleaf.png",
                                                 height: 40.0,
                                               ),
                                             ),
-                                            Text(
-                                                " Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen."),
+                                            Container(
+                                              width: 200,
+                                              child: Text(
+                                                  " Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen."),
+                                            ),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              width: 100.0,
+                                              width: 70.0,
                                               child: Image.asset(
-                                                "assets/blur.png",
-                                                height: 40.0,
-                                              ),
+                                                  "assets/blur.png",
+                                                  height: 70.0,
+                                                  width: 40.0),
                                             ),
-                                            Text(
-                                                "The image should not be blurr and should be clicked in good lighting."),
+                                            Container(
+                                              width: 200,
+                                              child: Text(
+                                                  "The image should not be blurr and should be clicked in good lighting."),
+                                            ),
                                           ],
                                         ),
                                         Row(
                                           children: [
-                                            // Image.asset("assets/"),
-                                            Text(
-                                                "Try to provide  a single leaf image"),
+                                            Container(
+                                              width: 50.0,
+                                              child: Image.asset(
+                                                "assets/singleleaf.png",
+                                                height: 40.0,
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 200,
+                                              child: Text(
+                                                  "Try to provide  a single leaf image"),
+                                            ),
                                           ],
                                         ),
                                         TextButton(
