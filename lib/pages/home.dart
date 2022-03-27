@@ -172,16 +172,21 @@ class _homeState extends State<home> {
                                         Row(
                                           children: [
                                             Container(
-                                              width: 50.0,
+                                              width: 70.0,
                                               child: Image.asset(
                                                 "assets/scanleaf.png",
-                                                height: 40.0,
+                                                height: 55.0,
                                               ),
                                             ),
+                                            SizedBox(width: 15.0),
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                  " Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen."),
+                                                "Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen.",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -194,26 +199,36 @@ class _homeState extends State<home> {
                                                   height: 70.0,
                                                   width: 40.0),
                                             ),
+                                            SizedBox(width: 15.0),
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                  "The image should not be blurr and should be clicked in good lighting."),
+                                                "The image should not be blurr and should be clicked in good lighting.",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
                                             ),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              width: 50.0,
+                                              width: 60.0,
                                               child: Image.asset(
                                                 "assets/singleleaf.png",
-                                                height: 40.0,
+                                                height: 50.0,
                                               ),
                                             ),
+                                            SizedBox(width: 20.0),
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                  "Try to provide  a single leaf image"),
+                                                "Try to provide  a single leaf image",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
                                             ),
                                           ],
                                         ),
