@@ -274,12 +274,74 @@ class _homeState extends State<home> {
                                   elevation: 16,
                                   child: Container(
                                     height: 350.0,
-                                    padding: EdgeInsets.all(40.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
-                                        Text("1."),
-                                        Text("2."),
-                                        Text("3."),
+                                        // Row(
+                                        //   children: [
+                                        //     Container(
+                                        //       width: 70.0,
+                                        //       child: Image.asset(
+                                        //         "assets/scanleaf.png",
+                                        //         height: 55.0,
+                                        //       ),
+                                        //     ),
+                                        //     SizedBox(width: 15.0),
+                                        //     Container(
+                                        //       width: 200,
+                                        //       child: Text(
+                                        //         "Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen.",
+                                        //         style: TextStyle(
+                                        //             fontWeight:
+                                        //                 FontWeight.w500),
+                                        //       ),
+                                        //     ),
+                                        //   ],
+                                        // ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 70.0,
+                                              child: Image.asset(
+                                                  "assets/blur.png",
+                                                  height: 70.0,
+                                                  width: 40.0),
+                                            ),
+                                            SizedBox(width: 15.0),
+                                            Container(
+                                              width: 200,
+                                              child: Text(
+                                                "The image should not be blurr and should be clicked in good lighting.",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 60.0,
+                                              child: Image.asset(
+                                                "assets/singleleaf.png",
+                                                height: 50.0,
+                                              ),
+                                            ),
+                                            SizedBox(width: 20.0),
+                                            Container(
+                                              width: 200,
+                                              child: Text(
+                                                "Try to provide  a single leaf image",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                         TextButton(
                                             onPressed: () =>
                                                 Navigator.of(context).pop(),
