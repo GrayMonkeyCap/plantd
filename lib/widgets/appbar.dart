@@ -86,11 +86,12 @@ void _showFeedback(context) {
     context: context,
     builder: (context) {
       return QuickFeedback(
-        title: 'Leave a feedback', // Title of dialog
+        title: 'Leave a feedback'.tr, // Title of dialog
         showTextBox: true, // default false
-        textBoxHint:
-            'Share your feedback', // Feedback text field hint text default: Tell us more
-        submitText: 'SUBMIT', // submit button text default: SUBMIT
+        textBoxHint: 'Share your feedback'
+            .tr, // Feedback text field hint text default: Tell us more
+        submitText: 'SUBMIT'.tr, // submit button text default: SUBMIT
+        askLaterText: 'Ask Me Later'.tr,
         onSubmitCallback: (feedback) async {
           final _auth = FirebaseAuth.instance;
           final db = AuthService().db;
