@@ -23,7 +23,7 @@ const Map<String, String> paIN = {
 
 //home page
   'appname': 'ਐਪ ਦਾ ਨਾਮ',
-  'homepage_title': 'ਹੋਮਪੇਜ ਸਿਰਲੇਖ',
+  'homepage_title': 'ਪੱਤੇ ਦੇ ਚਿੱਤਰ ਨੂੰ ਸਕੈਨ ਕਰੋ',
   'scan_button': 'ਸਕੈਨ ਬਟਨ',
   'upload_button': 'ਅੱਪਲੋਡ ਬਟਨ',
   'previous_report': 'ਪਿਛਲੀ ਰਿਪੋਰਟ',
@@ -53,4 +53,17 @@ const Map<String, String> paIN = {
 
 //previous report
   'Previous Reports': 'ਪਿਛਲੀਆਂ ਰਿਪੋਰਟਾਂ',
+  //tips
+  'visible':
+      'ਆਪਣੇ ਫ਼ੋਨ ਨੂੰ ਇੱਕ ਪੱਤੇ ਉੱਤੇ ਫੜੋ ਤਾਂ ਜੋ ਇਹ ਤੁਹਾਡੇ ਸਮਾਰਟਫ਼ੋਨ ਦੀ ਸਕਰੀਨ ਵਿੱਚ ਸਾਫ਼-ਸਾਫ਼ ਦਿਖਾਈ ਦੇ ਸਕੇ।',
+  'blur':
+      'ਚਿੱਤਰ ਨੂੰ ਧੁੰਦਲਾ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ ਅਤੇ ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਕਲਿੱਕ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।',
+  'single': 'ਇੱਕ ਸਿੰਗਲ ਪੱਤਾ ਚਿੱਤਰ ਪ੍ਰਦਾਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ',
+
+//feedback
+  'Feedback': 'ਸੁਝਾਅ',
+  'Leave a feedback': 'ਇੱਕ ਸੁਝਾਅ ਛੱਡੋ',
+  'Share your feedback': 'ਸੁਝਾਅ ਛੱਡੋ',
+  'SUBMIT': 'ਜਮ੍ਹਾਂ ਕਰੋ',
+  'Ask Me Later': 'ਬਾਅਦ ਵਿੱਚ ਪੁੱਛੋ',
 };
