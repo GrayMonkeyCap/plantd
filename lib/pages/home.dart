@@ -279,27 +279,27 @@ class _homeState extends State<home> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
-                                        // Row(
-                                        //   children: [
-                                        //     Container(
-                                        //       width: 70.0,
-                                        //       child: Image.asset(
-                                        //         "assets/scanleaf.png",
-                                        //         height: 55.0,
-                                        //       ),
-                                        //     ),
-                                        //     SizedBox(width: 15.0),
-                                        //     Container(
-                                        //       width: 200,
-                                        //       child: Text(
-                                        //         "Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen.",
-                                        //         style: TextStyle(
-                                        //             fontWeight:
-                                        //                 FontWeight.w500),
-                                        //       ),
-                                        //     ),
-                                        //   ],
-                                        // ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 70.0,
+                                              child: Image.asset(
+                                                "assets/scanleaf.png",
+                                                height: 55.0,
+                                              ),
+                                            ),
+                                            SizedBox(width: 15.0),
+                                            Container(
+                                              width: 200,
+                                              child: Text(
+                                                "Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen.",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                         Row(
                                           children: [
                                             Container(

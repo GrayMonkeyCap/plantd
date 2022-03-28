@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:quick_feedback/quick_feedback.dart';
 // import 'package:quick_feedback/quick_feedback.dart';
 
 class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
@@ -50,7 +51,7 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
               } else if (value == '/change_lang') {
                 Navigator.pushNamed(context, '/change_lang');
               } else if (value == '/feedback') {
-                // _showFeedback(context);
+                _showFeedback(context);
               } else {
                 //Navigator.pushReplacementNamed(context, '/signup');
                 await _auth.signOut().then(
@@ -64,7 +65,7 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
                   PopupMenuItem(
                       child: Text("change_lang".tr), value: '/change_lang'),
                   PopupMenuItem(
-                    child: Text("feedback".tr),
+                    child: Text("Feedback".tr),
                     value: '/feedback',
                   ),
                   PopupMenuItem(
@@ -80,31 +81,31 @@ class common_nav_bar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => new Size.fromHeight(appBar.preferredSize.height);
 }
 
-// void _showFeedback(context) {
-//   showDialog(
-//     context: context,
-//     builder: (context) {
-//       return QuickFeedback(
-//         title: 'Leave a feedback', // Title of dialog
-//         showTextBox: true, // default false
-//         textBoxHint:
-//             'Share your feedback', // Feedback text field hint text default: Tell us more
-//         submitText: 'SUBMIT', // submit button text default: SUBMIT
-//         onSubmitCallback: (feedback) async {
-//           final _auth = FirebaseAuth.instance;
-//           final db = AuthService().db;
-//           final User? user = _auth.currentUser;
-//           final uid = user!.uid;
-//           var collection =
-//               db.collection('users').doc(uid).collection('feedback');
-//           var docRef = collection.doc();
-//           final results = await docRef.set(
-//               {'rating': feedback['rating'], 'message': feedback['feedback']});
+void _showFeedback(context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return QuickFeedback(
+        title: 'Leave a feedback', // Title of dialog
+        showTextBox: true, // default false
+        textBoxHint:
+            'Share your feedback', // Feedback text field hint text default: Tell us more
+        submitText: 'SUBMIT', // submit button text default: SUBMIT
+        onSubmitCallback: (feedback) async {
+          final _auth = FirebaseAuth.instance;
+          final db = AuthService().db;
+          final User? user = _auth.currentUser;
+          final uid = user!.uid;
+          var collection =
+              db.collection('users').doc(uid).collection('feedback');
+          var docRef = collection.doc();
+          final results = await docRef.set(
+              {'rating': feedback['rating'], 'message': feedback['feedback']});
 
-//           print('$feedback'); // map { rating: 2, feedback: 'some feedback' }
-//           Navigator.of(context).pop();
-//         },
-//       );
-//     },
-//   );
-// }
+          print('$feedback'); // map { rating: 2, feedback: 'some feedback' }
+          Navigator.of(context).pop();
+        },
+      );
+    },
+  );
+}
