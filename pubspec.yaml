@@ -55,6 +55,7 @@ dependencies:
   flutter_tts: ^3.3.3
   pdf: ^3.7.1
   open_file: ^3.2.1
+  quick_feedback: ^0.1.1
   
   
 
