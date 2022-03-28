@@ -182,7 +182,7 @@ class _homeState extends State<home> {
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                "Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen.",
+                                                "visible".tr,
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w500),
@@ -203,7 +203,7 @@ class _homeState extends State<home> {
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                "The image should not be blurr and should be clicked in good lighting.",
+                                                "blur".tr,
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w500),
@@ -224,7 +224,7 @@ class _homeState extends State<home> {
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                "Try to provide  a single leaf image",
+                                                "single".tr,
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w500),
@@ -313,7 +313,7 @@ class _homeState extends State<home> {
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                "The image should not be blurr and should be clicked in good lighting.",
+                                                "blur".tr,
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w500),
@@ -334,7 +334,7 @@ class _homeState extends State<home> {
                                             Container(
                                               width: 200,
                                               child: Text(
-                                                "Try to provide  a single leaf image",
+                                                "single".tr,
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w500),

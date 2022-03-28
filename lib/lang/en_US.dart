@@ -53,4 +53,11 @@ const Map<String, String> enUS = {
 
 //previous report
   'Previous Reports': 'Previous Reports',
+
+  //tips
+  'visible':
+      'Hold your device over a leaf so that it’s clearly visible within your smartphone’s screen.',
+  'blur':
+      'The image should not be blurr and should be clicked in good lighting.',
+  'single': 'Try to provide  a single leaf image'
 };
